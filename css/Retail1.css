@@ -1,0 +1,1616 @@
+
+.row:before, .row:after {
+    display: none !important;
+}
+
+
+.topLogo {
+    BACKGROUND-IMAGE: url(https://storelocator.ril.com/images/header/top_redbg.jpg);
+    Z-INDEX: 1;
+    POSITION: absolute;
+    TEXT-ALIGN: left;
+    FONT-STYLE: normal;
+    BACKGROUND-REPEAT: repeat;
+    FONT-FAMILY: Tahoma,Calibri,Trebuchet MS,Arial;
+    HEIGHT: 75px;
+    COLOR: black;
+    FONT-SIZE: 0.7em;
+    TOP: 0%;
+    LEFT: 0%;
+}
+
+.wbodystyle {
+    BACKGROUND-IMAGE: url(https://storelocator.ril.com/images/header/bg.png);
+    Z-INDEX: 2;
+    POSITION: absolute;
+    BORDER-RIGHT-WIDTH: 1px;
+    BORDER-TOP-WIDTH: 1px;
+    BORDER-BOTTOM-WIDTH: 1px;
+    HEIGHT: 88%;
+    BORDER-LEFT-WIDTH: 1px;
+    TOP: 75px;
+    LEFT: 0%;
+}
+
+.mapPanel {
+    Z-INDEX: 5;
+    POSITION: absolute;
+    WIDTH: 69%;
+    HEIGHT: 99%;
+    LEFT: 30.1%;
+}
+
+.updateLatLngPanelCSS {
+    BACKGROUND-COLOR: white;
+    WIDTH: 100%;
+    DISPLAY: none;
+    HEIGHT: 150px;
+    OVERFLOW: scroll;
+    CURSOR: pointer;
+}
+
+.Resultspanel {
+    Z-INDEX: 6;
+    POSITION: absolute;
+    TEXT-ALIGN: left;
+    PADDING-BOTTOM: 5px;
+    BORDER-RIGHT-WIDTH: 1px;
+    BACKGROUND-COLOR: white;
+    FONT-STYLE: normal;
+    PADDING-LEFT: 5px;
+    DISPLAY: block;
+    FONT-FAMILY: Tahoma,Calibri,Trebuchet MS,Arial;
+    BORDER-TOP-WIDTH: 1px;
+    BORDER-BOTTOM-WIDTH: 1px;
+    HEIGHT: 98%;
+    COLOR: black;
+    FONT-SIZE: 0.9em;
+    BORDER-LEFT-WIDTH: 1px;
+    TOP: 0%;
+    FONT-WEIGHT: bold;
+    LEFT: 0.5%;
+}
+
+.MessageDiv {
+    BACKGROUND-IMAGE: url(../images/Design/transparent.png);
+    Z-INDEX: 7;
+    POSITION: absolute;
+    TEXT-ALIGN: center;
+    PADDING-BOTTOM: 5px;
+    FONT-STYLE: normal;
+    PADDING-LEFT: 5px;
+    BOTTOM: 7%;
+    PADDING-RIGHT: 5px;
+    DISPLAY: none;
+    BACKGROUND-REPEAT: repeat;
+    FONT-FAMILY: Tahoma,Calibri,Trebuchet MS,Arial;
+    COLOR: red;
+    FONT-SIZE: 0.8em;
+    RIGHT: 42%;
+    FONT-WEIGHT: bold;
+    PADDING-TOP: 5px;
+    LEFT: 42%;
+}
+
+.sidePanelCSS {
+    Z-INDEX: 9;
+    POSITION: absolute;
+    WIDTH: 95%;
+    HEIGHT: 91%;
+    COLOR: black;
+    OVERFLOW: auto;
+    TOP: 8%;
+}
+
+.sidePanelCSS1 {
+    Z-INDEX: 10;
+    POSITION: absolute;
+    WIDTH: 95%;
+    HEIGHT: 90%;
+    COLOR: black;
+    FONT-SIZE: 0.7em;
+    OVERFLOW: auto;
+    TOP: 8%;
+}
+
+.Resultspanel_Direction {
+    BACKGROUND-IMAGE: url(https://storelocator.ril.com/images/Design/direction1.png);
+    Z-INDEX: 11;
+    POSITION: absolute;
+    TEXT-ALIGN: left;
+    BORDER-RIGHT-WIDTH: 1px;
+    FONT-STYLE: normal;
+    WIDTH: 30%;
+    DISPLAY: none;
+    BACKGROUND-REPEAT: repeat;
+    FONT-FAMILY: Tahoma,Calibri,Trebuchet MS,Arial;
+    BORDER-TOP-WIDTH: 1px;
+    BORDER-BOTTOM-WIDTH: 1px;
+    HEIGHT: 80%;
+    COLOR: #ffffff;
+    FONT-SIZE: 0.9em;
+    OVERFLOW: visible;
+    BORDER-LEFT-WIDTH: 1px;
+    TOP: 8%;
+    RIGHT: 0%;
+    FONT-WEIGHT: bold;
+}
+
+.expanDivbutton_Direction {
+    Z-INDEX: 20;
+    POSITION: absolute;
+    BACKGROUND-COLOR: #dcd3f5;
+    TOP: 7.6%;
+    RIGHT: 0%;
+}
+
+.hideDivbutton {
+    Z-INDEX: 21;
+    POSITION: absolute;
+    BACKGROUND-COLOR: black;
+    COLOR: white;
+    TOP: 0%;
+    RIGHT: 0%;
+}
+
+.expanDivbutton {
+    Z-INDEX: 21;
+    POSITION: absolute;
+    BACKGROUND-COLOR: #dcd3f5;
+    TOP: 5%;
+    RIGHT: 0%;
+}
+
+.labelCSS {
+    TEXT-ALIGN: left;
+    FONT-STYLE: normal;
+    FONT-FAMILY: Tahoma,Calibri,Trebuchet MS,Arial;
+    COLOR: black;
+    FONT-SIZE: 0.7em;
+    FONT-WEIGHT: normal;
+    PADDING-TOP: 10px;
+}
+
+.labelCSS2 {
+    TEXT-ALIGN: left;
+    FONT-STYLE: normal;
+    FONT-FAMILY: Tahoma,Calibri,Trebuchet MS,Arial;
+    COLOR: white;
+    FONT-SIZE: 0.7em;
+    FONT-WEIGHT: normal;
+    PADDING-TOP: 10px;
+}
+
+.WaterMArkClass {
+    COLOR: gray;
+}
+
+.labelCSS3 {
+    TEXT-ALIGN: left;
+    FONT-STYLE: normal;
+    FONT-FAMILY: Tahoma,Calibri,Trebuchet MS,Arial;
+    COLOR: white;
+    FONT-SIZE: 0.8em;
+    FONT-WEIGHT: normal;
+    PADDING-TOP: 10px;
+}
+
+.labelCSS4 {
+    TEXT-ALIGN: left;
+    FONT-STYLE: normal;
+    FONT-FAMILY: Tahoma,Calibri,Trebuchet MS,Arial;
+    COLOR: black;
+    FONT-SIZE: 11px;
+    FONT-WEIGHT: normal;
+    PADDING-TOP: 10px;
+}
+
+.errorMessage {
+    TEXT-ALIGN: left;
+    FONT-STYLE: normal;
+    FONT-FAMILY: Tahoma,Calibri,Trebuchet MS,Arial;
+    COLOR: white;
+    FONT-SIZE: 11px;
+    FONT-WEIGHT: normal;
+    PADDING-TOP: 10px;
+}
+
+.labelCSS45 {
+    TEXT-ALIGN: left;
+    FONT-STYLE: normal;
+    FONT-FAMILY: Tahoma,Calibri,Trebuchet MS,Arial;
+    COLOR: white;
+    FONT-SIZE: 11px;
+    FONT-WEIGHT: bold;
+}
+
+.labelCSS5 {
+    TEXT-ALIGN: left;
+    FONT-STYLE: normal;
+    FONT-FAMILY: Tahoma,Calibri,Trebuchet MS,Arial;
+    COLOR: white;
+    FONT-SIZE: 1.8em;
+    FONT-WEIGHT: bold;
+}
+
+.labelCSS1 {
+    TEXT-ALIGN: left;
+    FONT-STYLE: normal;
+    FONT-FAMILY: Tahoma,Calibri,Trebuchet MS,Arial;
+    COLOR: black;
+    FONT-SIZE: 1em;
+    FONT-WEIGHT: normal;
+    PADDING-TOP: 10px;
+}
+
+.dropdownCSS {
+    TEXT-ALIGN: left;
+    FONT-STYLE: normal;
+    FONT-FAMILY: Tahoma,Calibri,Trebuchet MS,Arial;
+    COLOR: black;
+    FONT-SIZE: 0.7em;
+    FONT-WEIGHT: lighter;
+    PADDING-TOP: 10px;
+}
+
+.SliderClass {
+    Z-INDEX: 22;
+    POSITION: absolute;
+    PADDING-BOTTOM: 10px;
+    PADDING-LEFT: 2px;
+    WIDTH: 21%;
+    PADDING-RIGHT: 2px;
+    DISPLAY: none;
+    TOP: 5%;
+    PADDING-TOP: 5px;
+    LEFT: 5%;
+}
+
+.SearchCriteriaClass {
+    Z-INDEX: 23;
+    POSITION: absolute;
+    BACKGROUND-COLOR: transparent;
+    WIDTH: 80%;
+    DISPLAY: none;
+    HEIGHT: 10%;
+    COLOR: white;
+    TOP: 35px;
+    PADDING-TOP: 3px;
+    LEFT: 125px;
+}
+
+.ASearchCSS {
+    POSITION: absolute;
+    WIDTH: 200px;
+    HEIGHT: 50px;
+    TOP: 51%;
+}
+
+.SearchByAddressClass {
+    POSITION: absolute;
+    TEXT-ALIGN: left;
+    FONT-STYLE: normal;
+    MARGIN: 5px;
+    OUTLINE-STYLE: ridge;
+    OUTLINE-COLOR: silver;
+    OUTLINE-WIDTH: medium;
+    WIDTH: 21%;
+    DISPLAY: none;
+    FONT-FAMILY: Tahoma,Calibri,Trebuchet MS,Arial;
+    DIRECTION: ltr;
+    HEIGHT: 24%;
+    COLOR: #ffffff;
+    FONT-SIZE: 0.8em;
+    OVERFLOW: auto;
+    FONT-WEIGHT: normal;
+}
+
+.SearchByFormatClass {
+    BACKGROUND-IMAGE: url(../images/Design/transparent.png);
+    Z-INDEX: 24;
+    POSITION: absolute;
+    TEXT-ALIGN: left;
+    FONT-STYLE: normal;
+    MARGIN: 5px;
+    OUTLINE-STYLE: ridge;
+    OUTLINE-COLOR: silver;
+    OUTLINE-WIDTH: medium;
+    WIDTH: 21%;
+    DISPLAY: none;
+    FONT-FAMILY: Tahoma,Calibri,Trebuchet MS,Arial;
+    DIRECTION: ltr;
+    HEIGHT: 30%;
+    COLOR: #ffffff;
+    FONT-SIZE: 0.8em;
+    TOP: 5%;
+    FONT-WEIGHT: normal;
+    LEFT: 5%;
+}
+
+.SearchByPincodeClass {
+    BACKGROUND-IMAGE: url(../images/Design/transparent.png);
+    Z-INDEX: 24;
+    POSITION: absolute;
+    TEXT-ALIGN: left;
+    FONT-STYLE: normal;
+    MARGIN: 5px;
+    OUTLINE-STYLE: ridge;
+    OUTLINE-COLOR: silver;
+    OUTLINE-WIDTH: medium;
+    WIDTH: 19%;
+    DISPLAY: none;
+    FONT-FAMILY: Tahoma,Calibri,Trebuchet MS,Arial;
+    DIRECTION: ltr;
+    HEIGHT: 15%;
+    COLOR: #ffffff;
+    FONT-SIZE: 0.8em;
+    TOP: 25%;
+    FONT-WEIGHT: normal;
+    LEFT: 25%;
+}
+
+.markerClass {
+    TEXT-ALIGN: left;
+    BACKGROUND-COLOR: #ffffff;
+    FONT-STYLE: normal;
+    FONT-FAMILY: Tahoma,Calibri,Trebuchet MS,Arial;
+    COLOR: black;
+    FONT-SIZE: 1em;
+    FONT-WEIGHT: normal;
+    /*overflow:scroll;*/
+}
+
+#sc1 {
+    display: block;
+}
+
+.drpCSS {
+    TEXT-ALIGN: left;
+    FONT-STYLE: normal;
+    FONT-FAMILY: Tahoma,Calibri,Trebuchet MS,Arial;
+    COLOR: black;
+    FONT-SIZE: 1em;
+    FONT-WEIGHT: normal;
+}
+
+.SideClass {
+    Z-INDEX: 30;
+    TEXT-ALIGN: left;
+    FONT-STYLE: normal;
+    WIDTH: 99%;
+    FONT-FAMILY: Tahoma,Calibri,Trebuchet MS,Arial;
+    COLOR: black;
+    FONT-SIZE: 0.9em;
+    FONT-WEIGHT: normal;
+}
+
+.ColStyle {
+    Z-INDEX: 34;
+    BORDER-BOTTOM: gray 1px solid;
+    BORDER-LEFT: gray 1px solid;
+    PADDING-BOTTOM: 5px;
+    BACKGROUND-COLOR: white;
+    MARGIN: 2px;
+    PADDING-LEFT: 5px;
+    PADDING-RIGHT: 5px;
+    BORDER-TOP: gray 1px solid;
+    BORDER-RIGHT: gray 1px solid;
+    PADDING-TOP: 5px;
+}
+
+.BufferClass {
+    DISPLAY: none;
+}
+
+.textfiled1 {
+    border-top-width: 1px;
+    border-right-width: 1px;
+    border-bottom-width: 1px;
+    border-left-width: 1px;
+    border-top-style: solid;
+    border-right-style: solid;
+    border-bottom-style: solid;
+    border-left-style: solid;
+    border-top-color: #576e8a;
+    border-right-color: #576e8a;
+    border-bottom-color: #576e8a;
+    border-left-color: #576e8a;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 12px;
+    color: black;
+    text-decoration: none;
+    height: 18px;
+    background-image: url(../images/textf_bg.gif);
+    background-repeat: repeat-x;
+    width: 250px;
+}
+
+.MyLocationClass {
+    TEXT-ALIGN: left;
+    FONT-STYLE: normal;
+    DISPLAY: none;
+    FONT-FAMILY: Tahoma,Calibri,Trebuchet MS,Arial;
+    COLOR: #ffffff;
+    FONT-SIZE: 0.7em;
+    CURSOR: pointer;
+    FONT-WEIGHT: lighter;
+    PADDING-TOP: 10px;
+}
+
+.ACSS {
+    TEXT-ALIGN: left;
+    FONT-STYLE: normal;
+    FONT-FAMILY: Tahoma,Calibri,Trebuchet MS,Arial;
+    COLOR: black;
+    FONT-SIZE: 1.5em;
+    CURSOR: pointer;
+    FONT-WEIGHT: lighter;
+    PADDING-TOP: 10px;
+}
+
+.Resultheading {
+    BORDER-BOTTOM: blue 1px solid;
+    POSITION: absolute;
+    TEXT-ALIGN: justify;
+    BORDER-LEFT: blue 1px solid;
+    PADDING-BOTTOM: 2px;
+    BACKGROUND-COLOR: white;
+    FONT-STYLE: normal;
+    PADDING-LEFT: 2px;
+    WIDTH: 94%;
+    PADDING-RIGHT: 2px;
+    DISPLAY: none;
+    FONT-FAMILY: Tahoma,Calibri,Trebuchet MS,Arial;
+    HEIGHT: 5%;
+    COLOR: maroon;
+    FONT-SIZE: 1em;
+    OVERFLOW: auto;
+    BORDER-TOP: blue 1px solid;
+    TOP: 2%;
+    FONT-WEIGHT: normal;
+    BORDER-RIGHT: blue 1px solid;
+    PADDING-TOP: 2px;
+}
+
+.ShoppingItemsCSS {
+    FONT-STYLE: italic;
+    COLOR: blue;
+    CURSOR: pointer;
+}
+
+.ModalBackgroundClass {
+    Z-INDEX: 1000;
+    DISPLAY: none;
+    BACKGROUND: url(../images/Design/transparent.png);
+    position: absolute;
+    TOP: 0px;
+    LEFT: 0px;
+}
+
+.ModalDataClass {
+    Z-INDEX: 1000;
+    BORDER-BOTTOM: #9a9a9a 1px solid;
+    POSITION: absolute;
+    BORDER-LEFT: #9a9a9a 1px solid;
+    BACKGROUND-COLOR: #ffffff;
+    MARGIN: 5px;
+    OUTLINE-STYLE: solid;
+    OUTLINE-COLOR: blue;
+    OUTLINE-WIDTH: thin;
+    BORDER-SPACING: 10px;
+    WIDTH: 80%;
+    DISPLAY: block;
+    HEIGHT: 65%;
+    OVERFLOW: auto;
+    BORDER-TOP: #9a9a9a 1px solid;
+    TOP: 18%;
+    BORDER-RIGHT: #9a9a9a 1px solid;
+    LEFT: 10%;
+    /* marker-offset: 5px; */
+}
+
+.ModalMapClass {
+    POSITION: absolute;
+    PADDING-BOTTOM: 3px;
+    PADDING-LEFT: 3px;
+    WIDTH: 50%;
+    PADDING-RIGHT: 3px;
+    HEIGHT: 65%;
+    TOP: 7%;
+    RIGHT: 0%;
+    PADDING-TOP: 3px;
+}
+/*.ModalStoreInfoClass {
+	POSITION: absolute; TEXT-ALIGN: left; FONT-STYLE: normal; WIDTH: 40%; FONT-FAMILY: Tahoma,Calibri,Trebuchet MS,Arial; HEIGHT: 65%; COLOR: black; FONT-SIZE: 0.9em; OVERFLOW: auto; TOP: 5%; FONT-WEIGHT: lighter; LEFT: 3%
+}*/
+
+.ModalStoreInfoClass {
+    POSITION: absolute;
+    TEXT-ALIGN: left;
+    FONT-STYLE: normal;
+    FONT-FAMILY: Tahoma,Calibri,Trebuchet MS,Arial;
+    HEIGHT: 65%;
+    COLOR: black;
+    /*OVERFLOW: auto;*/
+    FONT-SIZE: 0.9em;
+    TOP: 5%;
+    FONT-WEIGHT: lighter;
+    LEFT: 3%;
+}
+
+.ModalPromotionClass {
+    POSITION: absolute;
+    TEXT-ALIGN: left;
+    FONT-STYLE: normal;
+    WIDTH: 93%;
+    FONT-FAMILY: Tahoma,Calibri,Trebuchet MS,Arial;
+    HEIGHT: 25%;
+    COLOR: black;
+    FONT-SIZE: 1em;
+    TOP: 68%;
+    FONT-WEIGHT: lighter;
+    LEFT: 3%;
+}
+
+.ModalClose {
+    PADDING-BOTTOM: 5px;
+    FONT-STYLE: normal;
+    PADDING-LEFT: 5px;
+    PADDING-RIGHT: 5px;
+    FONT-FAMILY: Tahoma,Calibri,Trebuchet MS,Arial;
+    FLOAT: right;
+    COLOR: black;
+    FONT-SIZE: 12px;
+    CURSOR: pointer;
+    FONT-WEIGHT: bold;
+    TEXT-DECORATION: none;
+    PADDING-TOP: 5px;
+}
+
+.SideCSSTableStyle {
+    CURSOR: pointer;
+}
+
+.ErrorMessagePannel {
+    TEXT-ALIGN: center;
+    PADDING-BOTTOM: 2px;
+    BACKGROUND-COLOR: #000080;
+    PADDING-LEFT: 2px;
+    WIDTH: 100%;
+    PADDING-RIGHT: 2px;
+    DISPLAY: block;
+    HEIGHT: auto;
+    COLOR: white;
+    CURSOR: pointer;
+    PADDING-TOP: 2px;
+}
+
+.MessageDirection {
+    FONT-STYLE: normal;
+    WIDTH: 100%;
+    FONT-FAMILY: Tahoma,Calibri,Trebuchet MS,Arial;
+    HEIGHT: auto;
+    COLOR: black;
+    FONT-SIZE: 0.8em;
+}
+
+.MessageDirectionError {
+    DISPLAY: none;
+    COLOR: red;
+}
+
+.MainTableCSS {
+    Z-INDEX: 1; /*POSITION: absolute*/
+}
+
+.ErrorMessagePannel {
+    TEXT-ALIGN: center;
+    PADDING-BOTTOM: 2px;
+    BACKGROUND-COLOR: #BB2D15;
+    PADDING-LEFT: 2px;
+    WIDTH: 100%;
+    PADDING-RIGHT: 2px;
+    DISPLAY: block;
+    HEIGHT: auto;
+    COLOR: white;
+    CURSOR: pointer;
+    PADDING-TOP: 2px;
+}
+
+/* ------------------------------------------------------------------------------*/
+/* | **************************************************************************  |*/
+/* | START OF MAIN INTERFACE CSS TAGS - DO NOT TOUCH/CHANGE WITHOUT CONTACTING   |*/
+/* | BILL DENGLER OR NICOLAS CHALESLE                                            |*/
+/* | **************************************************************************  |*/
+/* -------------------------------------------------------------------------------*/
+@import url(https://storelocator.ril.com/css/global.css);
+
+
+.CellHeader, .cellheader, .CellHeader2, .pdfCellHeader, .pdfcellheader, .pdfCellHeader2 { /*The main part of this style is in the global.css*/
+    color: #FFF;
+    background-color: #444C56;
+}
+
+    .CellHeader a, a .cellheader, a .CellHeader2, a .pdfCellHeader, a .pdfcellheader, a .pdfCellHeader2,
+    .CellHeader a:visited, .cellheader a:visited, .CellHeader2 a:visited, .pdfCellHeader a:visited, .pdfcellheader a:visited, .pdfCellHeader2 a:visited {
+        text-decoration: underline;
+        color: #FFF;
+    }
+
+.CellTitle, .cellTitle, .celltitle,
+.CellTitle2, .cellTitle2, .celltitle2,
+.CellTitle3, .cellTitle3, .celltitle3 { /*The main part of this style is in the global.css*/
+    color: #ffffff;
+    background: #71818e;
+    border-bottom: 2px solid #999999;
+    /*top   right  bottom left444C56*/
+}
+
+.CellOn, .dropdown { /*The main part of this style is in the global.css*/
+    border: none;
+    background-color: #ffffff;
+    padding: 8px 5px 8px 5px;
+    margin-bottom: 3px;
+}
+
+.blacktext {
+    font-family: normal Verdana, Arial, Helvetica, sans-serif;
+    font-size: 13px;
+    font-style: normal;
+    line-height: normal;
+    font-weight: bold;
+    font-variant: normal;
+    text-transform: none;
+    color: #3b3b3b;
+    text-decoration: none;
+}
+
+    .blacktext:hover {
+        font-family: normal Verdana, Arial, Helvetica, sans-serif;
+        font-size: 13px;
+        font-style: normal;
+        line-height: normal;
+        font-weight: bold;
+        font-variant: normal;
+        text-transform: none;
+        color: #c32d12;
+        text-decoration: none;
+    }
+
+
+/*Controls the flash applicaiton on the front page*/
+
+.fptext {
+    font-family: normal Verdana, Arial, Helvetica, sans-serif;
+    font-size: 11px;
+    color: #000000;
+    line-height: 14px;
+    margin: 5px 20px;
+    padding: 5px;
+}
+
+/*Tab CSS for Open Account Pages*/
+.acctapptabs {
+    float: left;
+    width: 100%;
+    line-height: normal;
+    border-bottom: 1px solid #999; /*Add border strip to bottom of menu*/
+    font: bold 11px Verdana, Arial, Georgia, sans-serif;
+}
+
+    .acctapptabs ul {
+        list-style-type: none;
+        margin: 0;
+        margin-left: 5px; /*Left offset of entire tab menu relative to page*/
+        padding: 0;
+    }
+
+    .acctapptabs li {
+        display: inline;
+        margin: 0;
+        padding: 0;
+    }
+
+    .acctapptabs a {
+        float: left;
+        background: url(http://www.interactivebrokers.com/images/common/acctapptab-left.gif) no-repeat left top;
+        margin: 0;
+        margin-right: 1px; /*spacing between each tab*/
+        padding: 0 0 0 9px;
+        text-decoration: none;
+    }
+
+        .acctapptabs a span {
+            float: left;
+            display: block;
+            background: url(http://www.interactivebrokers.com/images/common/acctapptab.gif) no-repeat right top;
+            padding: 5px 30px 3px 3px;
+            /*top   right  bottom left*/
+            font-weight: bold;
+            color: #3B3B3B;
+        }
+
+        /* Commented Backslash Hack hides rule from IE5-Mac \*/
+        .acctapptabs a span {
+            float: none;
+        }
+
+        /* End IE5-Mac hack */
+
+        .acctapptabs a:hover span {
+            color: black;
+        }
+
+        .acctapptabs a.current { /*Selected Tab style*/
+            background-position: 0 -82px; /*Shift background image up to start of 2nd tab image*/
+        }
+
+            .acctapptabs a.current span { /*Selected Tab style*/
+                background-position: 100% -82px; /*Shift background image up to start of 2nd tab image*/
+                color: black;
+            }
+
+        .acctapptabs a:hover { /*onMouseover style*/
+            background-position: 0% -82px; /*Shift background image up to start of 2nd tab image*/
+        }
+
+            .acctapptabs a:hover span { /*onMouseover style*/
+                background-position: 100% -82px; /*Shift background image up to start of 2nd tab image*/
+            }
+
+.tabcontainer {
+    clear: left;
+    width: 95%; /*width of 2nd level sub menus*/
+    height: auto; /*1.5emheight of 2nd level sub menus. Set to largest's sub menu's height to avoid jittering.*/
+}
+
+.tabcontent {
+    display: none;
+}
+
+
+
+
+
+
+body {
+    FONT-FAMILY: Arial, Helvetica, sans-serif;
+    font-size: 12px;
+    margin: 0;
+    padding: 0 0px;
+    background-color: #ffffff;
+    FONT-FAMILY: Arial, Helvetica, sans-serif;
+    scrollbar-face-color: #e1effd;
+    scrollbar-shadow-color: #c3dffc;
+    scrollbar-highlight-color: White;
+    scrollbar-3dlight-color: #c3dffc;
+    scrollbar-darkshadow-color: #ffffff;
+    scrollbar-track-color: #ffffff;
+    scrollbar-arrow-color: #62acf7;
+}
+
+a {
+    color: #08c;
+}
+
+    a:link, a:visited, a:active {
+        text-decoration: none;
+    }
+
+    a:hover {
+        text-decoration: underline;
+    }
+
+    a.block {
+        display: block;
+        cursor: pointer;
+    }
+
+a {
+    FONT-FAMILY: Arial, Helvetica, sans-serif;
+    font-size: 12px;
+    text-decoration: none;
+}
+
+    a:hover {
+        FONT-FAMILY: Arial, Helvetica, sans-serif;
+        font-size: 12px;
+        text-decoration: underline;
+    }
+
+td {
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 12px;
+    font-weight: normal;
+    color: #181818;
+    text-decoration: none;
+    line-height: 19px;
+}
+
+/*select {
+    FONT-FAMILY: Arial, Helvetica, sans-serif;
+    font-size: 12px;
+    color: #767676;
+    border: solid #c0c0c9 1px;
+    text-decoration: none;
+    line-height: 35px;
+    height: 40px;
+}*/
+
+
+/*input {
+    FONT-FAMILY: Arial, Helvetica, sans-serif;
+    font-size: 12px;
+    color: black;
+    border: solid #c0c0c9 1px;
+    text-decoration: none;
+    line-height: 17px;
+    text-indent: 3px;
+    height: 17px;
+}*/
+
+/*option {
+    FONT-FAMILY: Arial, Helvetica, sans-serif;
+    font-size: 12px;
+    font-style: normal;
+    line-height: normal;
+    font-weight: normal;
+    font-variant: normal;
+    text-transform: none;
+    color: #c0c0c9;
+    text-decoration: none;
+    background-color: #ffffff;
+    border: 1px solid #e7e7e7;
+}*/
+
+textarea {
+    FONT-FAMILY: Arial, Helvetica, sans-serif;
+    font-size: 12px;
+    color: #767676;
+    border: solid #c0c0c9 1px;
+    text-decoration: none;
+    text-indent: 3px;
+}
+
+.select2 {
+    FONT-FAMILY: Arial, Helvetica, sans-serif;
+    font-size: 12px;
+    color: #767676;
+    border: none;
+    text-decoration: none;
+    line-height: 15px;
+    height: 10px;
+}
+
+
+.textfiled {
+    border-top-width: 1px;
+    border-right-width: 1px;
+    border-bottom-width: 1px;
+    border-left-width: 1px;
+    border-top-style: solid;
+    border-right-style: solid;
+    border-bottom-style: solid;
+    border-left-style: solid;
+    border-top-color: #576e8a;
+    border-right-color: #576e8a;
+    border-bottom-color: #576e8a;
+    border-left-color: #576e8a;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 14px;
+    color: black;
+    text-decoration: none;
+    height: 25px;
+    background-image: url(../images/textf_bg.gif);
+    background-repeat: repeat-x;
+}
+
+
+.textfiled {
+    border-top-width: 1px;
+    border-right-width: 1px;
+    border-bottom-width: 1px;
+    border-left-width: 1px;
+    border-top-style: solid;
+    border-right-style: solid;
+    border-bottom-style: solid;
+    border-left-style: solid;
+    border-top-color: #576e8a;
+    border-right-color: #576e8a;
+    border-bottom-color: #576e8a;
+    border-left-color: #576e8a;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 12px;
+    color: black;
+    text-decoration: none;
+    /*height: 18px;*/
+    background-image: url(../images/textf_bg.gif);
+    background-repeat: repeat-x;
+}
+/*#headbg{
+	background-image:url(../images/background.jpg);
+	background-repeat: no-repeat;
+ 	margin: 0 0 3px 0;
+	height:75px;
+	background-color:#CF3A1C;
+	z-index : -100;
+	}*/
+.whitetext {
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 12px;
+    font-weight: normal;
+    color: #ffffff;
+    text-decoration: none;
+    line-height: 19px;
+}
+
+.buttonnew {
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 12px;
+    font-weight: normal;
+    color: #ffffff;
+    background-image: url(../images/but_midbg.gif);
+    background-repeat: repeat-x;
+    background-color: #496b9a;
+    height: 25px;
+    border: none;
+}
+
+.arrowpartition {
+    background-image: url(../images/part_bg.gif);
+    background-repeat: repeat-y;
+    background-color: #496b9a;
+    width: 15px;
+    border: none;
+}
+
+.footertext {
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 12px;
+    font-weight: normal;
+    color: #023681;
+}
+
+.blueboldtext {
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 16px;
+    font-weight: bold;
+    color: #00177c;
+    height: 15px;
+    text-indent: 2px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    text-decoration: underline;
+}
+
+.blkboldtext {
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 13px;
+    font-weight: bold;
+    color: #3b3b3b;
+    height: 15px;
+    text-indent: 1px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    text-decoration: none;
+}
+
+.bluebold {
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 12px;
+    font-weight: bold;
+    color: #0b3486;
+    height: 10px;
+    text-indent: 1px;
+    padding-top: 1px;
+    padding-bottom: 1px;
+    text-decoration: none;
+}
+
+.dotthorbg {
+    background-image: url(../images/hor_dot.gif);
+    background-repeat: repeat-x;
+    height: 3px;
+}
+
+.dotthorbg2 {
+    background-image: url(../images/hor_dot2.gif);
+    background-repeat: repeat-x;
+    height: 5px;
+}
+
+.graybgborder {
+    background-color: #f4f4f4;
+    border: solid 1px #e2e2e2;
+    padding: 0;
+    margin: 5px 0 5px 5px;
+}
+
+.bluebg {
+    /*background-color:#4ab3da;*/
+    background-color: #fff4d4;
+    cursor: pointer;
+}
+
+.greenbg {
+    background-color: #89ce4e;
+    cursor: pointer;
+}
+
+.scrollArea {
+    height: 340px;
+    padding-left: 5px;
+    padding-right: 5px;
+    border: none;
+    float: left;
+    overflow: auto!important;
+    background-color: white;
+}
+
+
+
+/*/* scrollbar */
+
+::-webkit-scrollbar {
+    width: 7px;
+    height: 5px;
+}
+
+::-webkit-scrollbar-track {
+    background-color: rgba(0, 0, 0, 0);
+    border-radius: 100px;
+}
+
+::-webkit-scrollbar-thumb {
+    background-color: rgba(0, 0, 0, 0.4);
+    border-radius: 5px;
+}
+
+    ::-webkit-scrollbar-thumb:hover {
+        background-color: rgba(0, 0, 0, 0.6);
+    }
+
+
+#slider_container_2 {
+    float: left;
+    margin: 0 0 0 -15px;
+    padding: 15px;
+    width: 352;
+    background: url(https://storelocator.ril.com/images/slider/bg.png) no-repeat 0 0;
+    background-color: Red;
+}
+
+body {
+    overflow: hidden;
+}
+
+
+
+.SliderNamePrev_2 {
+    background: url(../images/slider/arrow_07.gif) no-repeat left center;
+    width: 100px;
+    height: 247px;
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 0;
+    text-decoration: none;
+}
+
+.SliderNameNext_2 {
+    background: url(../images/slider/arrow_06.gif) no-repeat right center;
+    width: 100px;
+    height: 247px;
+    display: block;
+    position: absolute;
+    top: 0;
+    right: 0;
+    text-decoration: none;
+}
+
+.SliderName_2Description {
+    padding: 10px;
+    font-family: Tahoma,Arial,Helvetica;
+    font-size: 14px;
+    line-height: 30px;
+    letter-spacing: 1px;
+    text-align: center;
+    color: #ffffff;
+    text-shadow: 0 1px 3px #000000;
+}
+
+#SliderNameNavigation_2 {
+    margin-top: -20px;
+    width: 352px;
+    padding-left: -40px;
+    height: 16px;
+    text-align: center;
+    position: relative;
+}
+
+    #SliderNameNavigation_2 a:link, #SliderNameNavigation_2 a:active, #SliderNameNavigation_2 a:visited, #SliderNameNavigation_2 a:hover {
+        margin: 0;
+        padding: 0;
+        font-size: 0;
+        line-height: 0;
+        text-decoration: none;
+    }
+
+    #SliderNameNavigation_2 a img {
+        border: none;
+        width: 16px;
+        height: 16px;
+        background: url(../images/slider/bullet.png) no-repeat center center;
+    }
+
+    #SliderNameNavigation_2 a.active img {
+        background: url(../images/slider/bullet_active.png) no-repeat center center;
+    }
+
+/*
+
+DIV.selectbox-wrapper {
+	BORDER-BOTTOM: #ccc 1px solid;z-index:10000000; POSITION: absolute; TEXT-ALIGN: left; BORDER-LEFT: #ccc 1px solid; PADDING-BOTTOM: 0px; BACKGROUND-COLOR: white; MARGIN: -10px 0px 0px 4px; PADDING-LEFT: 0px; WIDTH: 150px; PADDING-RIGHT: 0px; MAX-HEIGHT: 200px; OVERFLOW: auto; BORDER-TOP: #ccc 1px solid; BORDER-RIGHT: #ccc 1px solid; PADDING-TOP: 0px
+}
+DIV.selectbox-wrapper UL {
+	PADDING-BOTTOM: 0px; LIST-STYLE-TYPE: none; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; PADDING-TOP: 0px
+}
+DIV.selectbox-wrapper UL LI.selected {
+	BACKGROUND-COLOR: #ffffff; FONT-FAMILY: Arial, Helvetica, sans-serif; COLOR: #6c6c6c; FONT-SIZE: 12px; FONT-WEIGHT: normal
+}
+DIV.selectbox-wrapper UL LI.current {
+	BACKGROUND-COLOR: #d4d4d4; FONT-FAMILY: Arial, Helvetica, sans-serif; COLOR: #6c6c6c; FONT-SIZE: 12px; FONT-WEIGHT: normal
+}
+DIV.selectbox-wrapper UL LI {
+	PADDING-BOTTOM: 4px; LIST-STYLE-TYPE: none; MARGIN: 0px; PADDING-LEFT: 4px; PADDING-RIGHT: 4px; DISPLAY: block; COLOR: #6c6c6c; CURSOR: pointer; FONT-WEIGHT: normal; PADDING-TOP: 4px
+}
+.selectbox {
+	BORDER-BOTTOM: #576e8a 1px solid; TEXT-ALIGN: left; BORDER-LEFT: #576e8a 1px solid; PADDING-BOTTOM: 0px; MARGIN: 0px 5px 12px 3px; PADDING-LEFT: 2px; WIDTH: 150px; DISPLAY: block; FONT-FAMILY: Arial, Helvetica, sans-serif; BACKGROUND: url(bg_select.png) right 50%; HEIGHT: 22px; COLOR: #767676; FONT-SIZE: 14px; BORDER-TOP: #576e8a 1px solid; CURSOR: pointer; FONT-WEIGHT: normal; BORDER-RIGHT: #576e8a 1px solid; PADDING-TOP: 2px
+}
+*/
+
+/* Dropdown control latest*/
+/*.selectBox-dropdown {
+    min-width: 150px;
+    border: #ccc 1px solid;
+    position: relative;
+    height: 23px;
+    FONT-FAMILY: Arial, Helvetica, sans-serif;
+    COLOR: #6c6c6c;
+    FONT-SIZE: 12px;
+    FONT-WEIGHT: normal;
+    text-decoration: none;
+    text-align: left;
+    color: #000;
+    outline: none;
+    vertical-align: middle;
+    padding-top: 0px;
+    display: inline-block;
+    PADDING-BOTTOM: 0px;
+    BACKGROUND-COLOR: white;
+    MARGIN: 0px 3px 0px 4px;
+    cursor: pointer;
+}*/
+
+.selectBox-dropdown:focus,
+.selectBox-dropdown:focus .selectBox-arrow {
+}
+
+.selectBox-dropdown.selectBox-menuShowing {
+}
+
+.selectBox-dropdown .selectBox-label {
+    padding: 2px 8px;
+    display: inline-block;
+    text-decoration: none;
+    white-space: nowrap;
+    overflow: hidden;
+}
+
+.selectBox-dropdown .selectBox-arrow {
+    position: absolute;
+    top: 0;
+    right: 0;
+    text-decoration: none;
+    width: 23px;
+    height: 100%;
+    background: url(jquery.bg_select.png) 50% center no-repeat;
+    border-left: solid 1px #BBB;
+}
+
+
+/* Dropdown menu */
+.selectBox-dropdown-menu {
+    position: absolute;
+    z-index: 99999;
+    max-height: 200px;
+    min-height: 1em;
+    border: solid 1px #BBB; /* should be the same border width as .selectBox-dropdown */
+    background: #FFF;
+    overflow: auto;
+}
+
+
+/* Inline control */
+.selectBox-inline {
+    min-width: 150px;
+    outline: none;
+    border: solid 1px #BBB;
+    background: #FFF;
+    display: inline-block;
+    overflow: auto;
+}
+
+    .selectBox-inline:focus {
+        border-color: #666;
+    }
+
+
+/* Options */
+.selectBox-options,
+.selectBox-options LI,
+.selectBox-options LI A {
+    list-style: none;
+    display: block;
+    cursor: default;
+    text-decoration: none;
+    Color: Black;
+    padding: 0;
+    margin: 0;
+}
+
+    .selectBox-options LI A {
+        line-height: 1.5;
+        padding: 0 .5em;
+        white-space: nowrap;
+        text-decoration: none;
+        overflow: hidden;
+        background: 6px center no-repeat;
+    }
+
+a:hover {
+    text-decoration: none;
+}
+
+.selectBox-options LI.selectBox-hover A {
+    background-color: #EEE;
+    text-decoration: none;
+}
+
+.selectBox-options LI.selectBox-disabled A {
+    color: #888;
+    text-decoration: none;
+    background-color: transparent;
+}
+
+.selectBox-options LI.selectBox-selected A {
+    background-color: #C8DEF4;
+    text-decoration: none;
+}
+
+.selectBox-options .selectBox-optgroup {
+    color: #666;
+    background: #EEE;
+    font-weight: bold;
+    line-height: 1.5;
+    padding: 0 .3em;
+    white-space: nowrap;
+}
+
+
+/* Disabled state */
+.selectBox.selectBox-disabled {
+    color: #888 !important;
+}
+
+.selectBox-dropdown.selectBox-disabled .selectBox-arrow {
+    opacity: .5;
+    filter: alpha(opacity=50);
+    border-color: #666;
+}
+
+.selectBox-inline.selectBox-disabled {
+    color: #888 !important;
+}
+
+    .selectBox-inline.selectBox-disabled .selectBox-options A {
+        background-color: transparent !important;
+        text-decoration: none;
+    }
+
+.searchkey {
+    overflow: hidden;
+    overflow-x: auto;
+    white-space: nowrap;
+    position: absolute;
+    bottom: 26px;
+    right: 0px;
+}
+
+.searchkeyitem {
+    display: inline-block;
+}
+
+#modal {
+    min-height: 0px!important;
+    min-width: 0px!important;
+}
+
+
+.btn-close {
+    position: absolute;
+    right: 10px;
+    top: 5px;
+}
+
+*#mainLogo {
+    height: 60px;
+}
+
+
+.container-fluid {
+    padding-left: 0px!important;
+    padding-right: 0px!important;
+}
+
+
+.scrollAreaClearDirection {
+    display: none;
+}
+
+.driveDetailExpand {
+    display: none;
+}
+
+.storeDetail {
+    display: none!important;
+}
+
+.dotthorbg {
+    display: none;
+}
+
+.ErrorMessagePannel {
+    display: none;
+}
+
+#mapBtn {
+    background-color: #000080!important;
+}
+
+#listBtn {
+    background-color: #C03015!important;
+}
+
+
+
+
+.getDirectionPopup {
+    position: absolute;
+    width: 250px;
+    height: 80px;
+    right: 20px;
+    background-color: white;
+    border-radius: 7px;
+    border: 1px solid black;
+}
+
+.numberCircle {
+    border-radius: 50%;
+    width: 26px;
+    height: 26px;
+    padding: 4px;
+    background: #fff;
+    border: 1px solid #666;
+    color: darkblue;
+    text-align: center;
+    font: px Arial, sans-serif;
+    font-size: 12px;
+}
+
+
+@media (max-width: 576px) {
+    .gm-style-iw.gm-style-iw-c {
+        max-width: 280px!important;
+        height: 310px!important;
+        max-height: 300px!important;
+    }
+
+    #welcomeMsg {
+        display: none;
+    }
+
+    .container-fluid {
+        padding-left: 0px!important;
+        padding-right: 0px!important;
+    }
+
+    .listViewDiv {
+        padding-right: 0px!important;
+    }
+}
+
+
+.round {
+    padding: 5px;
+    border: 1px solid #000;
+    -moz-border-radius: 15px;
+    border-radius: 15px;
+    color: darkblue;
+}
+
+#getDirectionDiv {
+    width: 255px;
+    background-color: white;
+    position: absolute;
+    top: 110px;
+    height: 90px;
+    border: 1px solid blue;
+    border-radius: 8px;
+}
+
+#directionsPanel {
+    overflow: scroll;
+    height: 260px;
+}
+
+#sc2 {
+    padding-left: 7px;
+}
+
+
+@media only screen and (max-width: 992px) {
+    .welcomeImg {
+        background-image: url(https://storelocator.ril.com/css/img/mobileBG.jpg);
+        background-position: bottom;
+    }
+
+    #removeLocation {
+        top:67px!important;
+        right:9px!important;
+    }
+    #welcomeMsg {
+        justify-content: flex-start!important;
+        margin-top: 90px!important;
+    }
+
+    .gm-style-iw.gm-style-iw-c {
+        max-width: 280px!important;
+        height: 320px!important;
+        max-height: 320px!important;
+    }
+
+    #sc2 {
+        padding-left: 0px!important;
+    }
+
+    #address {
+        color: black;
+    }
+
+    .markerClass {
+        overflow: scroll;
+    }
+
+    .scrollAreaClearDirection {
+        height: 100vh;
+        background-color: white;
+    }
+
+    #ClearDirectionSpan {
+        margin-top: 12px;
+    }
+}
+
+
+@media only screen and (max-height:1340px) {
+    .scrollArea {
+        height: 750px!important;
+    }
+
+    #directionsPanel {
+        height: 320px!important;
+        overflow: scroll!important;
+    }
+}
+
+@media only screen and (max-height:1030px) {
+    .scrollArea {
+        height: 570px!important;
+    }
+
+    #directionsPanel {
+        height: 600px!important;
+        overflow: scroll!important;
+    }
+}
+
+
+@media only screen and (max-height:840px) {
+    .scrollArea {
+        height: 365px!important;
+    }
+
+    #directionsPanel {
+        height: 450px!important;
+        overflow: scroll!important;
+    }
+}
+
+@media only screen and (max-height:770px) {
+    .scrollArea {
+        height: 295px!important;
+    }
+
+    #directionsPanel {
+        height: 320px!important;
+        overflow: scroll!important;
+    }
+}
+
+
+@media only screen and (max-height:740px) {
+    .scrollArea {
+        height: 290px!important;
+    }
+
+    #directionsPanel {
+        height: 320px!important;
+        overflow: scroll!important;
+    }
+}
+
+
+@media only screen and (max-height:690px) {
+    .scrollArea {
+        height: 360px!important;
+    }
+}
+
+
+/*@media only screen and (min-height:600px) and (max-height:650px) {
+    .scrollArea {
+        height: 190px!important;
+    }
+     #directionsPanel {
+        height: 320px!important;
+        overflow: scroll!important;
+    }
+
+}*/
+
+
+
+@media only screen and (min-height:640px) and (max-height:645px) {
+    .scrollArea {
+        height: 190px!important;
+    }
+
+    #directionsPanel {
+        height: 320px!important;
+        overflow: scroll!important;
+    }
+}
+
+@media only screen and (max-height:600px) {
+    .scrollArea {
+        height: 140px!important;
+    }
+
+    #directionsPanel {
+        height: 320px!important;
+        overflow: scroll!important;
+    }
+}
+
+
+
+.directionTitle {
+    position: absolute;
+    top: 22px;
+    left: 4px;
+}
+
+#sc0 {
+    display: none;
+}

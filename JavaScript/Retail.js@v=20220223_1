@@ -1,0 +1,2667 @@
+﻿
+window.onresize = setOnReSize;
+
+
+$('#getDirectionModal').click('shown.bs.modal', function () {
+    $(".modal-backdrop.in").remove();
+})
+
+
+function expandStoreDetails() {
+    $(".storeDetailIcon").toggleClass('fas fa-plus fas fa-minus');
+
+
+}
+
+function hideMap() {
+    $("#map_canvas").removeClass("d-none");
+    $("#map_canvas").addClass("d-block");
+}
+
+
+var total, fresh, super1, trends, mart, digital, footprint, istore, delight, vimal, jewellery, timeout, sb, auto, hamleys, living, officedepo, vissionexpress, digitalxpress, dxmini, smart, smartpoint, market, jiostore, qwikmart;
+
+
+function ShowDiv(divID) {
+    document.getElementById(divID).style.display = 'block';
+}
+
+function HideDiv(divID) {
+    document.getElementById(divID).style.display = 'none';
+}
+
+function DispalyMessage(div, content) {
+    var ele = document.getElementById(div);
+    ele.style.display = 'block';
+    ele.innerHTML = '<span style="color:#000000;">' + content + '</span>';
+}
+
+function ShowMessage(div, content) {
+    var ele = document.getElementById(div);
+    ele.innerHTML = '<span class = "ErrorMessagePannel">' + content + '</span>';
+}
+
+function HideMessage(div, content) {
+    var ele = document.getElementById(div);
+    ele.style.display = 'none';
+    ele.innerHTML = content;
+}
+
+function CloseModalWindow() {
+    document.getElementById("modal").style.display = 'none';
+    document.getElementById("ModalData").innerHTML = '';
+    document.getElementById("ModalPromotion").innerHTML = '';
+}
+
+function OnReSizeWindow() {
+    var winW;
+    var winH;
+
+    // the more standards compliant browsers (mozilla/netscape/opera/IE7) use window.innerWidth and window.innerHeight
+    if (typeof window.innerWidth != 'undefined') {
+        winW = window.innerWidth,
+            winH = window.innerHeight
+    }
+    // IE6 in standards compliant mode (i.e. with a valid doctype as the first line in the document)
+    else if (typeof document.documentElement != 'undefined'
+        && typeof document.documentElement.clientWidth !=
+        'undefined' && document.documentElement.clientWidth != 0) {
+        winW = document.documentElement.clientWidth,
+            winH = document.documentElement.clientHeight
+    }
+    // older versions of IE
+    else {
+        winW = document.getElementsByTagName('body')[0].clientWidth,
+            winH = document.getElementsByTagName('body')[0].clientHeight
+    }
+    var heightParam = winH - (document.getElementById("dynamic").offsetHeight + document.getElementById("header").offsetHeight + 38);
+    if (navigator.appName == "Microsoft Internet Explorer") {
+        document.getElementById("map_canvas").style.minWidth = "" + winW - 455;
+        document.getElementById("modal").style.minWidth = "" + winW;
+        document.getElementById("modal").style.minHeight = "" + winH;
+        document.getElementById("map_canvas").style.minHeight = winH - (document.getElementById("header").offsetHeight + 170);
+    }
+    if (navigator.appName == "Netscape") {
+        document.getElementById("map_canvas").style.minWidth = "" + (winW - 405) + "px";
+        document.getElementById("modal").style.minWidth = "" + winW + "px";
+        document.getElementById("modal").style.minHeight = "" + winH + "px";
+        document.getElementById("map_canvas").style.minHeight = "" + (winH - (document.getElementById("header").offsetHeight + 0)) + "px";
+    }
+    google.maps.event.trigger(map, 'resize');
+
+
+}
+
+function setOnReSize() {
+    google.maps.event.trigger(map, 'resize');
+    OnReSizeWindow();
+    google.maps.event.trigger(map, 'resize');
+}
+
+function watermark_tmp() {
+    var inputBox = document.getElementById("txt_Location");
+    document.getElementById("txt_Location").style.color = "Black";
+    if (inputBox.value.length > 0) {
+        if (inputBox.value == "Type your base location" || inputBox.value == "Enter Valid Address!!")
+            inputBox.value = '';
+    }
+}
+
+function watermark(inputId, text) {
+    var inputBox = document.getElementById(inputId);
+    document.getElementById(inputId).style.color = "Black";
+    if (inputBox.value.length > 0) {
+        if (inputBox.value == text)
+            inputBox.value = '';
+    }
+    else
+        inputBox.value = text;
+}
+
+//***********Get Directions Markers**********************
+
+function GetDirections(lat, lng) {
+
+    var end;
+    var myadd = document.getElementById("txt_Location").value;
+    var start = new google.maps.LatLng(lat, lng);
+    var mydestination = [];
+    directionsDisplay.setMap(map);
+    directionsDisplay.setPanel(document.getElementById("directionsPanel"));
+
+    $("#sc1").removeClass("d-block");
+    $("#sc1").addClass("d-none");
+    document.getElementById("showstateDetail").innerHTML = '<img align="absmiddle" src="images/plus_symbol.gif"  />&nbsp;&nbsp;';
+
+    $("#sc2").removeClass("d-none");
+    $("#sc2").addClass("d-block");
+    document.getElementById("showstateDriveDetail").innerHTML = '<img align="absmiddle" src="images/minus_symbol.gif"  />&nbsp;&nbsp;';
+
+    $(".driveDetailExpand").removeClass("d-none");
+    $(".driveDetailExpand").addClass("d-block");
+    $(".scrollAreaClearDirection").removeClass("d-none");
+    $(".scrollAreaClearDirection").addClass("d-block");
+    $("#ClearDirectionSpan").removeClass("d-none");
+    $("#ClearDirectionSpan").addClass("d-block");
+    $(".driveDetailExpand").removeClass("d-none");
+    $(".driveDetailExpand").addClass("d-block");
+
+
+
+    var flag = window.matchMedia('(max-width:991px)')
+    if (flag.matches) {
+        $("#blueboldtext1").removeClass("d-block");
+        $("#blueboldtext1").addClass("d-none");
+        $(".dotthorbg").removeClass("d-block");
+        $(".dotthorbg").addClass("d-none");
+        $("#storeDetail").addClass("d-none");
+
+        $("#mapContainer").removeClass("d-block");
+        $("#mapContainer").addClass("d-none");
+
+
+        $("#sc1").removeClass("d-block");
+        $("#sc1").addClass("d-none");
+        $(".driveDetailExpand").removeClass("d-block");
+        $(".driveDetailExpand").addClass("d-none");
+        $("#sc2").removeClass("d-none");
+        $("#sc2").addClass("d-block");
+
+
+        $(".switchcontentDetail").removeClass("d-none");
+        $(".switchcontentDetail").addClass("d-block");
+        $("#ClearDirectionSpan").removeClass("d-none");
+        $("#ClearDirectionSpan").addClass("d-block");
+        $(".scrollAreaClearDirection").removeClass("d-none");
+        $(".scrollAreaClearDirection").addClass("d-block");
+
+        document.getElementById("storeDetail").style.display = "none";
+
+
+
+    }
+    geocoder.geocode({ 'address': myadd, 'region': 'in' }, function (results, status) {
+        if (status == google.maps.GeocoderStatus.OK) {
+            for (var i = 0; i < results.length; i++) {
+                FlagForIndiaAddress = findRegion(results[i]);
+                if (FlagForIndiaAddress == "India") {
+                    mydestination.push(results[i].geometry.location);
+                    end = results[i].geometry.location;
+                    var request =
+                    {
+                        origin: end,
+                        destination: start,
+                        travelMode: google.maps.DirectionsTravelMode.DRIVING
+                    };
+                    directionsService.route(request, function (response, status) {
+                        if (status == google.maps.DirectionsStatus.OK) {
+                            directionsDisplay.setDirections(response);
+                            expandcontent(document.getElementById('2'), 'sc2');
+                            ShowDiv('2');
+                            ShowDiv('ClearDirectionSpan');
+                        }
+                    });
+
+
+                }
+                else {
+                    ClearDirections();
+                    document.getElementById("txt_Location").value = "Enter Valid Address!!";
+                    return;
+                }
+            }
+        }
+        else {
+            document.getElementById("txt_Location").value = "Enter Valid Address!!";
+            return;
+        }
+    });
+
+
+
+}
+
+
+
+function ClearDirections() {
+    directionsDisplay.setMap(null);
+    closeInfoWindow();
+    document.getElementById("directionsPanel").innerHTML = "";
+    directionsDisplay.setDirections({ routes: [] });
+    HideDiv('ClearDirectionSpan');
+    HideDiv('2');
+    $("#ClearDirectionSpan").removeClass("d-block");
+    $("#ClearDirectionSpan").addClass("d-none");
+    $(".sc0").removeClass("d-none");
+    $(".sc0").addClass("d-block");
+    $("#storeDetail").removeClass("d-none");
+    $("#storeDetail").addClass("d-block");
+    $("#blueboldtext1").removeClass("d-none");
+    $("#blueboldtext1").addClass("d-block");
+    $(".clearDirection").removeClass("d-block");
+    $(".clearDirection").addClass("d-none");
+    $(".driveDetailExpand").removeClass("d-block");
+    $(".driveDetailExpand").addClass("d-none");
+    //expandcontent(document.getElementById('1'), 'sc1');
+    $("#sc1").removeClass("d-none");
+    $("#sc1").addClass("d-block");
+    document.getElementById("showstateDetail").innerHTML = '<img align="absmiddle" src="images/minus_symbol.gif"  />&nbsp;&nbsp;';
+
+
+    var flag = window.matchMedia('(max-width:991px)')
+    if (flag.matches) {
+        map.setZoom(10);
+        ClearMarkers(Marker, flag);
+        countMap++;
+        document.getElementById("map_canvas").style.visibility = "visible";
+        $("#mapContainer").removeClass("d-none");
+        $("#sidePanel").show();
+        document.getElementById("map_canvas").style.visibility = "visible";
+
+        $("#blueboldtext1").removeClass("d-none");
+        $("#blueboldtext1").addClass("d-block");
+
+        $(".dotthorbg").removeClass("d-none");
+        $(".dotthorbg").addClass("d-block");
+
+        document.getElementById("dotthorbg").style.display = "block";
+        Marker.pop().setMap(null);
+
+
+
+    }
+
+
+}
+
+
+var LocationToFindStoresNearBy = [];
+var StoreMarkerArray = []; //used to MAnagege all the Store MArkers
+var DistanceAndStore = [];
+var DistanceAndStore_drive = [];
+var DistanceAndStore_hash = [];
+var LocationMarker = [];
+var digital;
+var arrdigital = []
+var mdistancesearch;
+
+//*****************Find Store From TextBox********************
+// function to search all the stores witin the specified distance......
+function DisplayFormatwise(format) {
+    codeAddressFormat(format, document.getElementById('BufferDistance').value, document.getElementById("address").value, 'true');
+}
+
+function getAllStoresFromDB(flag, format, distance, latitude, longitude) {
+    //   alert(flag);
+    var xmlhttp;
+    if (window.XMLHttpRequest) {
+        xmlhttp = new XMLHttpRequest();
+    }
+    else {// code for IE6, IE5
+        xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
+    }
+    xmlhttp.onreadystatechange = function () {
+        if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
+            //Gets the Data And Calls the function to mark the stores
+            //            if (flag == "true") {
+            //                FindNearByStores(xmlhttp.responseText);
+            //            }
+            //            else {
+            //if(flag=="true"){
+            // alert(xmlhttp.responseText);
+            MarkFoundedStore_ByAscDistance(xmlhttp.responseText, flag);
+            //          }
+        }
+    }
+    if ((distance == "Radius in Kms?") || (distance == "Enter a valid distance") || (distance == "")) {
+        mdistancesearch = 500;
+    } else if (isNaN(distance)) {
+        mdistancesearch = 500;
+    }
+    else {
+        mdistancesearch = distance;
+    }
+
+    //Send the Data to psudo page to process it
+    // alert("kk");
+    xmlhttp.open("GET", "getAllStores.aspx?flag=" + flag + "&Searchformat=" + format + "&distance=" + mdistancesearch + "&latitude=" + latitude + "&longitude=" + longitude, true);
+    xmlhttp.send(null);
+}
+
+//function to executed when user clicks the search button
+function codeAddressFormat(format, Bdst, address, drill) {
+   
+    //$(".ErrorMessagePannel").addClass("d-none");
+    //alert("gg");    
+    if ((Bdst == "Radius in Kms?") || (Bdst == "Enter a valid distance") || (Bdst == "")) {
+        mdistancesearch = 500;
+    } else if (isNaN(Bdst)) {
+        //document.getElementById('errorDistance').innerHTML = "Please enter a valid distance";
+        document.getElementById('BufferDistance').style.color = "Red";
+        document.getElementById('BufferDistance').value = "Radius in Kms?";
+        return;
+    }
+    else {
+        mdistancesearch = Bdst;
+    }
+
+
+
+
+
+
+    if (address == "Enter a location") {
+        address = "india";
+        l_flag = "0";
+
+
+
+    } else {
+        l_flag = "1";
+
+    }
+
+
+    var flag = window.matchMedia('(max-width:991px)')
+    document.getElementById("viewMapBtn").style.visibility = "visible";
+
+    if (address == "india") {
+        
+        $("#mapContainer").addClass("d-none");
+
+        if (address == "india") {
+            $("#storeDetail").removeClass("d-block");
+            $("#storeDetail").addClass("d-none");
+            document.getElementById("blueboldtext1").style.display = "none";
+            $(".ErrorMessagePannel").removeClass("d-none");
+            $(".ErrorMessagePannel").addClass("d-block");
+        }
+        else {
+            $(".dotthorbg").removeClass("d-none");
+            $(".dotthorbg").addClass("d-block");
+
+            $("#sc0").removeClass("d-none");
+            $("#sc0").addClass("d-block");
+
+            $("#storeDetail").removeClass("d-none");
+            $("#storeDetail").addClass("d-block");
+
+
+
+
+            $(".ErrorMessagePannel").removeClass("d-block");
+            $(".ErrorMessagePannel").addClass("d-none");
+            expandcontent(document.getElementById('1'), 'sc1');
+            ShowDiv('1');
+
+
+
+        }
+
+
+    }
+
+    expandcontent(document.getElementById('1'), 'sc1');
+    //ShowDiv('1');
+
+    //expandcontent(document.getElementById('1'), 'sc1');
+    //ShowDiv('1');
+
+    ClearMarkers(LocationMarker, true);
+
+    var FlagForIndiaAddress;
+    var imgicon = new google.maps.MarkerImage('images/icons/ltblu-blank.png',
+        new google.maps.Size(37, 34),
+        new google.maps.Point(0, 0),
+        new google.maps.Point(9, 34));
+    try {
+
+        geocoder.geocode({ 'address': address, 'region': 'in' }, function (results, status) {
+
+            if (status == google.maps.GeocoderStatus.OK) {
+                for (var i = 0; i < results.length; i++) {
+                    FlagForIndiaAddress = findRegion(results[i]);
+                    if (FlagForIndiaAddress == "India") {
+                        LocationToFindStoresNearBy.push(results[i].geometry.location);
+                        var marker = new google.maps.Marker({
+                            position: results[0].geometry.location,
+                            icon: imgicon,
+                            map: map
+                        });
+                        LocationMarker.push(marker);
+                        var latitude = results[0].geometry.location.lat();
+                        var longitude = results[0].geometry.location.lng();
+
+                        map.panTo(results[0].geometry.location);
+                        map.setZoom(10);
+                        //alert("hhh");
+                        if (l_flag == "0") {
+                            DispalyMessage('Result', '');
+                            document.getElementById('address').style.color = "Red";
+
+                            ClearMarkers(StoreMarkerArray, true);
+                            document.getElementById("sidePanel").innerHTML = "";
+                            map.setZoom(10);
+                            ClearDirections();
+                            return;
+
+                        }
+                        getAllStoresFromDB(drill, format, Bdst, latitude, longitude);
+                    }
+                    else {
+                        //   alert("Please Enter Region from India");
+                        ShowMessage('sidePanel', 'No Store Found');
+                        DispalyMessage('Result', '');
+                    }
+                }
+
+
+                var flag = window.matchMedia('(max-width:991px)')
+                if (flag.matches) {
+                    debuuger;
+
+                    $("#sc0").removeClass("d-none");
+                    $("#sc0").addClass("d-block");
+
+                    $("#storeDetail").removeClass("d-none");
+                    $("#storeDetail").addClass("d-block");
+
+                    //expandcontent(document.getElementById('1'), 'sc1');
+                    //ShowDiv('1');
+                    $("#mapContainer").removeClass("visible");
+
+                    $("#mapContainer").addClass("hidden");
+
+
+                    $("#map_canvas").addClass("d-none");
+                    $(".driveDetailExpand").addClass("d-none");
+                    document.getElementById("viewMapBtn").style.visibility = "visible";
+                    //expandcontent(document.getElementById('1'), 'sc1');
+                    //ShowDiv('1');
+
+
+                }
+
+            }
+            else {
+                //alert("Geocode was not successful for the following reason: " + status);
+                DispalyMessage('Result', '');
+
+                //document.getElementById('address').value = "Please enter a valid location";
+                document.getElementById('address').style.color = "Red";
+                ShowMessage('sidePanel', 'No Store Found');
+            }
+        });
+
+        $("#blueboldtext1").removeClass("d-none");
+        $("#blueboldtext1").addClass("d-block");
+        $("#welcomeMsg").removeClass("d-flex");
+        $("#welcomeMsg").addClass("d-none");
+
+
+    }
+    catch (e) { }
+    /*eldose sir*/
+    OnReSizeWindow();
+
+
+
+
+}
+
+function MarkFoundedStore_ByAscDistance(allStoreInfo, flag) {
+    
+
+    var icons;
+    total = 0; fresh = 0; super1 = 0; trends = 0; mart = 0; centro = 0; digital = 0; footprint = 0; timeout = 0; auto = 0; delight = 0; istore = 0; sb = 0; vimal = 0; jewellery = 0;
+    hamleys = 0; living = 0; officedepo = 0; vissionexpress = 0; digitalxpress = 0; dxmini = 0; smart = 0; smartpoint = 0; market = 0; jiostore = 0, qwikmart = 0;
+
+
+    var storeInfo = allStoreInfo.toString().split('$');
+    console.log(storeInfo);
+
+    // alert(storeInfo);
+    //sets the Shadw icon of the marker
+    var iconShadow = new google.maps.MarkerImage('http://www.google.com/mapfiles/shadow50.png',
+        new google.maps.Size(37, 34),
+        new google.maps.Point(0, 0),
+        new google.maps.Point(9, 34));
+    var contentString = "";
+    var modal_info = "";
+    var sapformatlist = "";
+    var SideHTML = "";
+    document.getElementById("sidePanel").innerHTML = SideHTML;
+    //clears the Store markers 
+    ClearMarkers(StoreMarkerArray, true);
+    StoreMarkerArray = [];
+    //check no fo stores returned..if less then 10 display all stores else display only 10 stores 
+    var arraylength;
+
+    var storeReturned = DistanceAndStore_hash.length;
+
+    arraylength = storeReturned;
+    var alp = 0;
+    alp = 0;
+    //loops through each store and marks it
+    if (storeInfo.length == 1) {
+        DispalyMessage('Result', '');
+        WriteResult('true')
+        return;
+    }
+
+    for (var i = 0; i < storeInfo.length - 1; i++) {
+
+        if (alp > 25)
+            alp = 0;
+        letter = String.fromCharCode("a".charCodeAt(0) + (alp));
+        alp++;
+        var mstore = storeInfo[i].toString().split('^');
+
+        var icons = new google.maps.MarkerImage("images/" + mstore[3].toString().toLowerCase() + "/letter_" + letter + ".png",
+            // This marker is 20 pixels wide by 34 pixels tall.
+            new google.maps.Size(32, 37),
+            // The origin for this image is 0,0.
+            new google.maps.Point(0, 0),
+            // The anchor for this image is at 6,20.
+            new google.maps.Point(5, 10));
+        var imgpath = "letter_" + letter + ".png";
+        //Splits the String to get the indivisual stores information
+        // if ((DistanceAndStore_hash[kk][1] == mstore[0])) {
+        contentString = "";
+        contentDirectionDetails = "";
+        // var icons = GetIcon(mstore[3]);  //gets icon url by passing store format           
+        var marker = null;
+        try {
+            marker = new google.maps.Marker
+                ({
+                    position: new google.maps.LatLng(mstore[1], mstore[2]),
+                    map: map,
+                    icon: icons,
+                    title: mstore[0]
+                });
+        }
+        catch (e) { }
+        var storename;
+        var address;
+        var eid;
+        imgpath = "images/" + mstore[3].toString().toLowerCase() + "/" + imgpath;
+        //   alert(imgpath);
+        //alert(mstore);
+        var contactno, storetime, howtoreach, shopfor, inourstore;
+        var storeimages = '';
+        storename = escape(mstore[4]);
+        address = escape(mstore[5]); eid = escape(mstore[6]);
+        contactno = escape(mstore[7]); storetime = escape(mstore[8]);
+        howtoreach = escape(mstore[9]); shopfor = escape(mstore[10]);
+        inourstore = escape(mstore[12])
+        managername = escape(mstore[13]);
+        managerid = escape(mstore[14]);
+        storeimages = escape(mstore[15]);
+        modal_info = '';
+        modal_info = mstore[0] + "^" + mstore[1] + "^" + mstore[2] + "^" + escape(mstore[3].toString()) + "^" + storename + "^" + address + "^" + eid + "^" + contactno + "^" + storetime + "^" + howtoreach + "^" + shopfor + '^' + managername + '^' + managerid + '^' + inourstore + '^' + storeimages;
+
+
+        sapformatlist = mstore[0] + "^" + mstore[1] + "^" + mstore[2] + "^" + unescape(escape(mstore[3])) + "^" + storename + "^" + address + "^" + eid + "^" + contactno + "^" + storetime + "^" + howtoreach + "^" + shopfor + "^" + "";
+
+
+
+        var address_tmp = document.getElementById("address").value;
+        if (address_tmp == 'Enter a location')
+            address_tmp = '';
+        StoreMarkerArray.push(marker);  // manages the Store Markers  
+        contentString += '<div class="markerClass">';
+        contentString += '<table>';
+        contentString += '<tr><td colspan="2"><img src="images/' + mstore[3].toString().toLowerCase() + '.jpg" width="85" height="24" /></td><td colspan="2" class="d-flex justify-content-center d-lg-none d-block"><i class="fas fa-search-plus fa-2x pe-4" title="Zoom to Store location" alt="Zoom to Store location" style="cursor:pointer;" onclick="ZoomToStore(' + mstore[1] + "," + mstore[2] + ')" /></i><i class="fas fa-directions fa-2x" id="getDirectionBtn" style="cursor:pointer;" onclick="openDirectionModal(' + mstore[1] + "," + mstore[2] + ')"/></i></td></tr>';
+        contentString += '<tr><td colspan="3"><b id="modalStoreName">' + unescape(storename) + '</b></td></tr>';
+        contentString += '<tr class="d-lg-none"><td nowrap="nowrap" valign="top">Address</td><td>:</td><td>' + unescape(address) + '</td></tr>';
+
+        contentString += '<tr><td nowrap="nowrap" valign="top">Shop Timing</td><td>:</td><td>' + unescape(storetime) + '</td></tr>';
+
+        contentString += '<tr class="d-lg-none"><td nowrap="nowrap" valign="top">Contact no.</td><td>:</td><td>' + unescape(contactno) + '</td></tr>';
+        contentString += '<tr class="d-lg-none"><td nowrap="nowrap" valign="top">Email-id</td><td>:</td><td>' + unescape(eid) + '</td></tr>';
+
+        contentString += '</table>  <hr style="background-color:Black;" />';
+
+        //FOR DESKTOP VIEW
+
+        contentString += '<div class="d-lg-block d-none" ><b>Get directions from where you are to ' + unescape(storename) + '</b>:<br/> <input type="text" id ="txt_Location" class="textfiled1" onfocus="watermark_tmp();"  onblur="watermark_tmp();"  value="' + address_tmp + '"  />   <a href="#" onclick ="javascript:GetDirections(' + mstore[1] + ',' + mstore[2] + ');"><img style="vertical-align: bottom;"  src="images/header_go.gif"></a>  ';
+
+        //FOR DESKTOP VIEW
+        contentString += '<table class="d-lg-block d-none"><tr><td align="center"><img src="images/zoom.jpg" class="zoomLocation" title="Zoom to Store location" alt="Zoom to Store location" style="cursor:pointer;" onclick="ZoomToStore(' + mstore[1] + ',' + mstore[2] + ')" /></td><td class="additionalInfo" data-bs-toggle="modal" data-bs-target="#exampleModal" align="center" style="padding-left: 15px"> <img src="images/additional.jpg" alt="Additional Store Information" title="Additional Store Information" style="cursor:pointer;" onclick =ShowModalWindow("' + (modal_info) + '"); /></td></tr></table>';
+
+        contentString += '</div></div>';
+
+        //FOR MOBILE VIEW
+        //contentString += "<div class='d-flex justify-content-center d-lg-none d-block' ><i class='fas fa-search-plus fa-2x pe-4' title='Zoom to Store location' alt='Zoom to Store location' style='cursor:pointer;' onclick='ZoomToStore(" + mstore[1] + "," + mstore[2] + ")' /></i><i class='fas fa-directions fa-2x' id='getDirectionBtn' style='cursor:pointer;' onclick='openDirectionModal(" + mstore[1] + "," + mstore[2] + ")'/></i></div>";
+
+
+
+        SetCounterForFormatCount(unescape(escape(mstore[3].toString().toLowerCase())));
+
+        SideHTML += '<tr><td><table width="100%" border="0" align="left" cellpadding="0" cellspacing="0"><tr><td class="graybgborder"><table width="100%" border="0" align="center" cellpadding="0" cellspacing="0">'
+        SideHTML += '<tr><td valign="top"><table width="97%" border="0" align="center" cellpadding="0" cellspacing="0" style="margin-top:9px;">'
+        SideHTML += '<tr><td height="11" colspan="2" valign="top"><img src="images/spacer.gif" width="1" height="1" /></td></tr><tr><td valign="top" style="cursor:pointer;" colspan="2"  id="' + (mstore[1]) + '" name="' + (mstore[1]) + '"  onclick="javascript:openInfoWindow(' + (StoreMarkerArray.length - 1) + ')" ><img style="vertical-align:middle;" src="' + imgpath + '" width="25" height="25" hspace="8" vspace="14" /><img style="vertical-align:middle;" src="images/' + mstore[3].toString().toLowerCase() + '.jpg" width="85" height="24" /></td></tr><tr><td colspan="2" valign="top" class="dotthorbg2"><img src="images/spacer.gif" width="1" height="1" /></td>'
+        SideHTML += '</tr><tr><td valign="top" class="bluebold">Distance</td><td valign="top"><a href="#" onclick="javascript:openInfoWindow(' + (StoreMarkerArray.length - 1) + '),GetDirections(' + mstore[1] + ',' + mstore[2] + ');"> &nbsp;&nbsp;~' + mstore[16] + 'Km.</a></td></tr><tr><td colspan="2" valign="top" class="dotthorbg2"><img src="images/spacer.gif" width="1" height="1" /></td></tr><tr><td valign="top" class="bluebold">Store Name </td><td valign="top">' + mstore[4] + '</td></tr>'
+        SideHTML += '<tr><td colspan="2" valign="top" class="dotthorbg2"><img src="images/spacer.gif" width="1" height="1" /></td></tr><tr><td valign="top" class="bluebold">Address </td><td valign="top">' + mstore[5] + '</td></tr><tr><td colspan="2" valign="top" class="dotthorbg2"><img src="images/spacer.gif" width="1" height="1" /></td></tr>';
+        if (mstore[3].toString().toLowerCase() != "fresh" && mstore[3].toString().toLowerCase() != "quikmart" && mstore[3].toString().toLowerCase() != "sb" && mstore[3].toString().toLowerCase() != "smart" && mstore[3].toString().toLowerCase() != "smart point") {
+            SideHTML += '<tr><td valign="top" class="bluebold">Email</td><td valign="top">' + unescape(eid) + '&nbsp;&nbsp;&nbsp;&nbsp;</td></tr>';
+            SideHTML += '<td valign="top" class="bluebold">Contact</td><td valign="top">' + unescape(contactno) + '&nbsp;&nbsp;&nbsp;&nbsp;</td></tr>';
+        }
+        SideHTML += '<td valign="top" class="bluebold"></td><td valign="top"><a href="#"  data-bs-toggle="modal" data-bs-target="#exampleModal" onclick= javascript:ShowModalWindow("' + (modal_info) + '");>Read More...</a></td></tr></table></td></tr></table></td></tr></table></td></tr>';
+        addInfoWindow(marker, contentString);
+        closeInfoWindow(marker, contentString);
+
+        infowindow.setOptions({ maxWidth: 430 }); //20191220|SAMEER|ADDED MAX-WIDTH FOR POPUP ON CLICK
+        contentString = "";
+
+    }
+
+
+
+
+    // alert(SideHTML);
+    document.getElementById("sidePanel").innerHTML = "<table>" + SideHTML + "</table>";
+    //Call MArkerevent Function......... 
+    // Creating a LatLngBounds object
+
+    var bounds = new google.maps.LatLngBounds();
+    if (StoreMarkerArray.length == 1) {
+        map.setZoom(20);
+        map.setCenter(StoreMarkerArray[0].getPosition());
+
+    }
+    else {
+        for (var i = 0; i < StoreMarkerArray.length; i++) {
+            // Extending the bounds object with each LatLng
+            bounds.extend(StoreMarkerArray[i].getPosition());
+        }
+        map.fitBounds(bounds);
+    }
+    WriteResult(flag);
+    DistanceAndStore_hash = [];
+    mdistancesearch = 0;
+    ClearDirections();
+    //
+    document.getElementById("sc0").style.display = "block";
+    document.getElementById("viewMapBtn").style.visibility = "visible";
+    document.getElementById("storeDetail").style.display = "block";
+    $("#welcomeMsg").removeClass("d-flex");
+    $("#welcomeMsg").addClass("d-none");
+}
+
+
+
+//************************************************************
+function findRegion(result) {
+    var ifindia = '';
+    for (var i = 0; i < result.address_components.length; i++) {
+        if (result.address_components[i].long_name == "India") {
+            ifindia = result.address_components[i].long_name;
+            break;
+        }
+        else {
+            ifindia = '';
+            continue;
+        }
+    }
+    return ifindia;
+}
+//********Get Color For Format *****************************************/
+
+function WriteResult(flag) {
+    var count = 0;
+    var count_format = 0;
+    var ele = document.getElementById("Result");
+    var cnt = '';
+    if (total == 0) {
+        cnt += "<b class='ps-1'>No store found!!&nbsp;&nbsp;</b>";
+    } else if (total == 1) {
+        cnt += "<b class='ps-1'>Located " + total + " store near you! " + "&nbsp;&nbsp;</b>";
+    } else {
+        cnt += "<b class='ps-1'>Located " + total + " stores near you! " + "&nbsp;&nbsp;</b>";
+    }
+
+    var counts = {};
+    arr.forEach(function (x) { counts[x] = (counts[x] || 0) + 1; });
+
+
+
+    var keysSorted = Object.values(counts).sort(function (a, b) { return b - a })
+
+
+
+    var sorted = Object.fromEntries(
+        Object.entries(counts).sort(function (a, b) { return a[1] - b[1] })
+    )
+
+    cnt += "<div  border='0'><div class='row'>";
+
+    for (var key in sorted) {
+        var value;
+        value = sorted[key];
+        keyParameter = key.toUpperCase();
+        console.log(keyParameter);
+        cnt += "<div class='col-3 d-flex justify-content-center ps-2'><a href='#' onclick='DisplayFormatwise(\"" + keyParameter + "\")';><img style='width:70px;' src='./images/" + key + ".jpg'><span align='center' valign='middle'> " + "<h6 class='text-center fw-bold'>" + value + "</h6>" + "</a>&nbsp;&nbsp;&nbsp;</span></div>";
+        cnt += "<td></td>";
+        count++
+        if (count > 3) {
+            count = 0;
+            cnt += "</div><div class='row'>";
+        }
+        count_format++;
+
+    }
+
+    if (flag == 'true' && count_format == 1) {
+        //cnt += "<a colspan='2' width='100px' align='center' valign='middle'><span href='#'onclick=DisplayFormatwise('All');> Go Back </span></a>";
+        //cnt += "<a class='col-4' href='#' onclick=DisplayFormatwise('All');> Go Back </a>"
+        cnt += "<button  style='width:70px;height:22px;background-color: #000080;border:0px;color: white;' onclick=DisplayFormatwise('All');>Go Back</button>"
+        //cnt += "<img src='img/back.png' onclick=DisplayFormatwise('All')>"
+
+
+        //cnt += "<h4 onclick=DisplayFormatwise('All'); style='position:absolute;left:100px;margin-top:4px;'>Go Back</h4>"
+        count++;
+    }
+
+    if (count == 0) {
+        cnt += "</div></div>";
+
+    } else {
+        cnt += "<div class='col-4'></div></div></div>"
+
+    }
+
+
+
+    cnt += "</div></div>";
+
+
+    ele.innerHTML = cnt;
+    ele.style.display = 'block';
+
+    arr.length = 0;
+
+
+
+
+}
+
+
+
+function tmp_WriteResult(flag) {
+    var count = 0;
+    var count_format = 0;
+    var ele = document.getElementById("Result");
+    var cnt = '';
+    if (total == 0) {
+        cnt += "<b>No store found!!&nbsp;&nbsp;</b>";
+    } else if (total == 1) {
+        cnt += "<b>Located " + total + " store near you! " + "&nbsp;&nbsp;</b>";
+    } else {
+        cnt += "<b>Located " + total + " stores near you! " + "&nbsp;&nbsp;</b>";
+    }
+
+
+    cnt += "<br />";
+
+
+    if (fresh > 0) {
+        cnt += "<a href='#'onclick=DisplayFormatwise('FRESH');>fresh :: " + fresh + "</a>&nbsp;&nbsp;&nbsp;";
+        count++;
+        if (count > 2) {
+            count = 0;
+            cnt += "<br />";
+        }
+        count_format++;
+    }
+
+
+    if (mart > 0) {
+        cnt += "<a href='#'onclick=DisplayFormatwise('MART');>Mart :: " + mart + "</a>&nbsp;&nbsp;&nbsp;";
+        count++;
+        if (count > 2) {
+            count = 0;
+            cnt += "<br />";
+        } count_format++;
+    }
+    if (super1 > 0) {
+        cnt += "<a href='#'onclick=DisplayFormatwise('SUPER');>Super :: " + super1 + "</a>&nbsp;&nbsp;&nbsp;";
+        count++;
+        if (count > 2) {
+            count = 0;
+            cnt += "<br />";
+        } count_format++;
+    }
+    if (footprint > 0) {
+
+        cnt += "<a href='#'onclick=DisplayFormatwise('FOOTPRINT');>Footprint :: " + footprint + "</a>&nbsp;&nbsp;&nbsp;";
+        count++;
+        if (count > 2) {
+            count = 0;
+            cnt += "<br />";
+        } count_format++;
+    }
+    if (trends > 0) {
+        cnt += "<a href='#'onclick=DisplayFormatwise('TRENDS');>Trends :: " + trends + "</a>&nbsp;&nbsp;&nbsp;";
+        count++;
+        if (count > 2) {
+            count = 0;
+            cnt += "<br />";
+        } count_format++;
+    }
+
+    if (centro > 0) {
+        // cnt += "<a href='#'onclick=DisplayFormatwise('digital');>Digital :: "+digital+"</a>&nbsp;&nbsp;&nbsp;";
+        cnt += "<a href='#'onclick=DisplayFormatwise('CENTRO');>Centro :: " + centro + "</a>&nbsp;&nbsp;&nbsp;";
+        count++;
+        if (count > 2) {
+            count = 0;
+            cnt += "<br />";
+        } count_format++;
+    }
+    if (digital > 0) {
+        // cnt += "<a href='#'onclick=DisplayFormatwise('digital');>Digital :: "+digital+"</a>&nbsp;&nbsp;&nbsp;";
+        cnt += "<a href='#'onclick=DisplayFormatwise('DIGITAL');>Digital :: " + digital + "</a>&nbsp;&nbsp;&nbsp;";
+        count++;
+        if (count > 2) {
+            count = 0;
+            cnt += "<br />";
+        } count_format++;
+    }
+
+    if (istore > 0) {
+        cnt += "<a href='#'onclick=DisplayFormatwise('ISTORE');>iStore :: " + istore + "</a>&nbsp;&nbsp;&nbsp;";
+        count++;
+        if (count > 2) {
+            count = 0;
+            cnt += "<br />";
+        } count_format++;
+    }
+    if (timeout > 0) {
+        cnt += "<a href='#'onclick=DisplayFormatwise('TIMEOUT');>Timeout :: " + timeout + "</a>&nbsp;&nbsp;&nbsp;";
+        count++;
+        if (count > 2) {
+            count = 0;
+            cnt += "<br />";
+        }
+    }
+    if (auto > 0) {
+        cnt += "<a href='#'onclick=DisplayFormatwise('AUTO');>AutoZone :: " + auto + "</a>&nbsp;&nbsp;&nbsp;";
+        count++;
+        if (count > 2) {
+            count = 0;
+            cnt += "<br />";
+        } count_format++;
+    }
+    if (delight > 0) {
+        cnt += "<a href='#'onclick=DisplayFormatwise('DELIGHT');>Delight :: " + delight + "</a>&nbsp;&nbsp;&nbsp;";
+        count++;
+        if (count > 2) {
+            count = 0;
+            cnt += "<br />";
+        } count_format++;
+    }
+    if (sb > 0) {
+        cnt += "<a href='#'onclick=DisplayFormatwise('SB');>SB :: " + sb + "</a>&nbsp;&nbsp;&nbsp;";
+        count++;
+        if (count > 2) {
+            count = 0;
+            cnt += "<br />";
+        } count_format++;
+    }
+    if (vimal > 0) {
+
+        cnt += "<a href='#'onclick=DisplayFormatwise('VIMAL');>Vimal :: " + vimal + "</a>&nbsp;&nbsp;&nbsp;";
+        count++;
+        if (count > 2) {
+            count = 0;
+            cnt += "<br />";
+        } count_format++;
+    }
+    if (jewellery > 0) {
+        cnt += "<a href='#'onclick=DisplayFormatwise('JEWELLERY');>Jewellery :: " + jewellery + "</a>&nbsp;&nbsp;&nbsp;";
+        count++;
+        if (count > 2) {
+            count = 0;
+            cnt += "<br />";
+        } count_format++;
+    }
+    if (jiostore > 0) {
+        cnt += "<a href='#'onclick=DisplayFormatwise('JIO STORE');>Jio Store :: " + jiostore + "</a>&nbsp;&nbsp;&nbsp;";
+        count++;
+        if (count > 2) {
+            count = 0;
+            cnt += "<br />";
+        } count_format++;
+    }
+
+    if (hamleys > 0) {
+        cnt += "<a href='#'onclick=DisplayFormatwise('HAMLEYS');>Hamleys :: " + hamleys + "</a>&nbsp;&nbsp;&nbsp;";
+        count++;
+        if (count > 2) {
+            count = 0;
+            cnt += "<br />";
+        } count_format++;
+    }
+    if (living > 0) {
+        cnt += "<a href='#'onclick=DisplayFormatwise('LIVING');>Living :: " + living + "</a>&nbsp;&nbsp;&nbsp;";
+        count++;
+        if (count > 2) {
+            count = 0;
+            cnt += "<br />";
+        } count_format++;
+    }
+    if (officedepo > 0) {
+        cnt += "<a href='#'onclick=DisplayFormatwise('OFFICE DEPOT');>Office Depot :: " + officedepo + "</a>&nbsp;&nbsp;&nbsp;";
+        count++;
+        if (count > 2) {
+            count = 0;
+            cnt += "<br />";
+        } count_format++;
+    }
+    if (vissionexpress > 0) {
+        cnt += "<a href='#'onclick=DisplayFormatwise('VISION EXPRESS');>Vision Express :: " + vissionexpress + "</a>&nbsp;&nbsp;&nbsp;";
+        count++;
+        if (count > 2) {
+            count = 0;
+            cnt += "<br />";
+        } count_format++;
+    }
+    if (qwikmart > 0) {
+        cnt += "<a href='#'onclick=DisplayFormatwise('QWIKMART');>QWIKMART :: " + qwikmart + "</a>&nbsp;&nbsp;&nbsp;";
+        count++;
+        if (count > 2) {
+            count = 0;
+            cnt += "<br />";
+        } count_format++;
+    }
+    if (flag == 'true') {
+        cnt += "<br /><a href='#'onclick=DisplayFormatwise('All');> Go Back </a>&nbsp;&nbsp;&nbsp;";
+    }
+
+
+    ele.innerHTML = cnt;
+    ele.style.display = 'block';
+}
+
+
+var arr = [];
+function SetCounterForFormatCount(format) {
+
+
+    arr.push(format);
+
+    total++;
+    if (format == "fresh") {
+        fresh++;
+    }
+    if (format == "mart") {
+        mart++;
+    }
+
+    if (format == "super") {
+        super1++;
+    }
+    if (format == "footprint") {
+        footprint++;
+    }
+    if (format == "trends") {
+        trends++;
+    }
+    if (format == "centro") {
+        centro++;
+    }
+    if (format == "digital") {
+        digital++;
+    }
+    if (format == "istore") {
+        istore++;
+    }
+
+    if (format == "delight") {
+        delight++;
+    }
+    if (format == "vimal") {
+
+        vimal++;
+    }
+    if (format == "jewellery") {
+        jewellery++;
+    }
+    if (format == "jio store") {
+        jiostore++;
+    }
+    if (format == "timeout") {
+        timeout++;
+    }
+    if (format == "sb") {
+        sb++;
+    }
+    if (format == "auto") {
+        auto++;
+    }
+
+    if (format == "hamleys") {
+        hamleys++;
+    }
+
+    if (format == "living") {
+        living++;
+    }
+    if (format == "office depot") {
+        officedepo++;
+    }
+    if (format == "vision express") {
+        vissionexpress++;
+    }
+    if (format == "digital xpress") {
+        digitalxpress++;
+    }
+    if (format == "dx mini") {
+        dxmini++;
+    }
+    if (format == "smart") {
+        smart++;
+    }
+    if (format == "smart point") {
+        smartpoint++;
+    }
+    if (format == "market") {
+        market++;
+    }
+    if (format == "qwikmart") {
+        qwikmart++;
+    }
+}
+
+function openInfoWindow(i) {
+    map.setCenter(StoreMarkerArray[i].getPosition());
+    google.maps.event.trigger(StoreMarkerArray[i], "click");
+
+
+    var flag = window.matchMedia('(max-width:991px)')
+    if (flag.matches) {
+
+        $("#map_canvas").removeClass("d-block");
+
+        $("#map_canvas").addClass("d-none");
+    }
+}
+
+function addInfoWindow(marker, contentString) {
+
+    google.maps.event.addListener(marker, 'click', function () {
+        infowindow.setContent(contentString);
+        infowindow.setOptions({ maxWidth: 600 });
+        infowindow.open(map, marker);
+    });
+}
+
+function closeInfoWindow(marker, contentString) {
+    infowindow.close(map, marker);
+}
+
+
+
+function addInfoWindowDetail(marker, contentString, contentDirectionDetails) {
+
+    google.maps.event.addListener(marker, 'click', function () {
+        infowindow.setContent(contentString);
+        infowindow.setContent(contentDirectionDetails)
+        infowindow.setOptions({ maxWidth: 600 });
+        infowindow.open(map, marker);
+    });
+}
+
+function openDirectionModal(lat, long) {
+    var storeName = $("#modalStoreName").html();
+    var currAddr = $("#address").val();
+    $("#directioncontent").empty();
+    var modalString = "";
+    modalString += '<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>';
+    modalString += '<b>Get directions from where you are to ' + storeName + '</b>';
+    modalString += '<br/>';
+    modalString += '<input type="text" id ="txt_Location" class="textfiled1 w-100" onfocus="watermark_tmp();" onblur="watermark_tmp();"  value="' + currAddr + '"  /> ';
+    modalString += '<br/>';
+
+    modalString += '<button class="bg-primary text-white mt-1 "  data-bs-dismiss="modal" aria-label="Close" onclick ="hideMap();javascript:GetDirections(' + lat + ',' + long + ');">GO</div>'
+
+    $("#directioncontent").html(modalString);
+    $("#getdirectionmodal").modal("show");
+}
+
+
+
+////From ModalWindow.js
+function ShowModalWindow(storeinformation) {
+    //document.getElementById("ModalData").innerHTML = "";
+    //document.getElementById("ModalPromotion").innerHTML = "";
+    var Store_info = storeinformation.toString().split('^');
+    var contentString = "";
+    var format = unescape(Store_info[3].toString().toLowerCase());
+    var Otherinfo = "";
+    var store_no = Store_info[0];
+    var name = unescape(Store_info[4]);
+    var Addrress = unescape(Store_info[5]);
+    var storeTiming = unescape(Store_info[8]);
+    var eid = unescape(Store_info[6]);
+    var storeimge = unescape(Store_info[14]);
+    var ht = 0.70 * document.getElementById("exampleModal").style.minHeight;
+
+
+    contentString += '<div class="modal-body">';
+    contentString += '<tr><td valign="top" colpan="3"><img src="images/' + format + '.jpg" width="85" height="24" /></td></tr>'
+    contentString += ' <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>';
+    contentString += '<div class="row"><div class="col-lg-1 col-3"><span><strong>Name.  </strong></span></div><div class="col-lg-6 col-9"><span>:' + name + '</span></div></div>'
+    contentString += '<div class="row"><div class="col-lg-1 col-3"><span><strong>Address.  </strong></span></div><div class="col-lg-8 col-9"><span>:' + Addrress + '</span></div></div>'
+
+    contentString += '<div class="row">';
+    contentString += '<div class="col-lg-8 col-12">';
+    //contentString += '<div class="row"><div class="col-lg-2 col-3"><span><strong>Address.  </strong></span></div><div class="col-lg-8 col-9"><span>' + Addrress + '</span></div></div>'
+    contentString += '<hr style="background-color:Black;" />'
+    contentString += '<p valign="top" colspan="3" class="m-0"><b class="text-black">Customer Service Desk</b></p>'
+    contentString += '<div class="row"><div class="col-lg-2 col-3"><span><strong>Contact no.  </strong></span></div><div class="col-lg-6 col-9"><span> :' + unescape(Store_info[7]) + '</span></div></div>'
+    contentString += '<div class="row"><div class="col-lg-2 col-3"><span><strong>Email-id. </strong></span></div><div class="col-lg-6 col-9"><span>:<a href=mailto:' + eid + '?subject=Customer%20Feedback>' + eid + '</a></span></div></div>'
+    contentString += '<div class="row"><div class="col-lg-2 col-3"><span><strong>Customer Care. </strong></span></div><div class="col-lg-6 col-9"><span>:<a href=mailto' + unescape(Store_info[12]) + '?subject=Customer%20Feedback>' + unescape(Store_info[12]) + '</a></span></div></div>'
+
+
+    var format = unescape(Store_info[3].toString().toLowerCase());
+    var temp = '';
+    var shopFor = unescape(Store_info[13]) //GetDataFromXML(unescape(Store_info[3]).toLowerCase());
+    for (var i = 1; i < shopFor.split('|').length; i++) {
+        var temp2 = shopFor.split('|')[i];
+        //temp += '<p class="font-italic font-weight-bold text-secondary text-black">' + temp2.split(':')[0] + '</p>';
+        temp += '<ul><li class="fst-italic font-weight-bold text-secondary text-black">' + temp2 + '</li></ul>';
+    }
+    Otherinfo += '<p class="font-weight-bold text-secondary text-black d-none d-lg-block"><strong>In our Stores</strong></p>' + temp;
+    contentString += '<div class=" font-weight-bold d-none d-lg-block text-black" style="font-weight:bold;">' + Otherinfo + '</div>';
+    contentString += '</div>';
+    contentString += '<div class="col-lg-4 col-12 d-none d-lg-block text-center">';
+    contentString += '<div id="SliderName_2" class="text-center"></div><div id="SliderNameNavigation_2"></div>';
+    contentString += '</div>';
+    contentString += '</div>';
+    contentString += '</div>';
+
+    contentString += '</table> ';
+    var format = unescape(Store_info[3].toString().toLowerCase());
+
+    var temp = '<table>';
+    var shopFor = unescape(Store_info[13]) //GetDataFromXML(unescape(Store_info[3]).toLowerCase());
+
+
+    if (format.toUpperCase() == 'DIGITAL' || format.toUpperCase() == 'ISTORE') {
+        for (var i = 1; i < shopFor.split('|').length; i++) {
+            var temp2 = shopFor.split('|')[i];
+
+            temp += '<tr>';
+            temp += '<td nowrap="nowrap"  valign="top"><span style="padding-right:3px">&#149;</span><i><b>' + temp2.split(':')[0] + '</i></b></td>';
+            temp += '<td style="padding-right:3px;padding-left:3px;"  valign="top"><b> : </b></td><td>' + temp2.split(':')[1] + '</td>';
+            temp += '</tr>';
+        }
+    }
+    else if (format.toUpperCase() == 'DIGITAL XPRESS') {
+        for (var j = 1; j < shopFor.split('|').length; j++) {
+            temp += '<tr>';
+            temp += '<td  valign="top"><span style="padding-right:3px">&#149;</span><i><b>' + shopFor.split('|')[j] + '</i></b></td>';
+            temp += '</tr>';
+        }
+    }
+    else {
+        temp += '<tr>';
+        temp += '<td  valign="top"><span style="padding-right:3px">&#149;</span><i><b>' + shopFor.split('|')[1] + '</i></b></td>';
+        temp += '</tr>';
+
+    }
+    Otherinfo += "<tr><td colspan='2'><b>In our Stores</b></td>" + temp;
+    document.getElementById("storeContent").innerHTML = contentString;
+    //document.getElementById("ModalPromotion").innerHTML = Otherinfo;
+    //document.getElementById("modal").style.display = 'block';
+    getImages(format, storeimge);
+
+}
+
+
+
+
+function fileExists(url) {
+
+    try {
+        var oHttp = window.ActiveXObject ? new ActiveXObject("Microsoft.XMLHTTP") : new XMLHttpRequest();
+
+        oHttp.open("GET", url, false);
+        oHttp.send();
+        //alert('hi');
+        if (oHttp.readyState == 4) {
+            // req is complete (200 for web servers, 0 for local files in IE)   
+
+            if ((oHttp.status == 200) || (oHttp.status == 0)) { return true; }
+            else { return false; }
+        }
+        return false;
+    } // end try 
+    catch (exception) {
+        return true;
+    } // end catch 
+}
+
+function getImages(format, strImages) {
+    var storeImgs = strImages.split('|');
+    var sliderIMG = "";
+    var imgDiv = document.getElementById('SliderName_2');
+    document.getElementById('SliderNameNavigation_2').innerHTML = "";
+    if (storeImgs.length == 0) {
+        sliderIMG += '<img alt="Store Image" class="storeImage"  title ="Store Image" src="images/store_img/' + format + '/' + format + '.jpg" width="252" height="170" />'
+        imgDiv.innerHTML = sliderIMG;
+    }
+    else if (storeImgs.length == 1) {
+        var url = "images/store_img/" + format + "/" + storeImgs[0];
+        sliderIMG += '<img alt="Store Image" class="storeImage" title ="Store Image" src="' + url + '" width="252" height="170" />';
+        imgDiv.innerHTML = sliderIMG;
+    }
+    else {
+        for (var i = 0; i < storeImgs.length; i++) {
+            var url = "images/store_img/" + format + "/" + storeImgs[i];
+
+            if (fileExists(url))
+                sliderIMG += '<img alt="Store Image" class="storeImage"  title ="Store Image" src="' + url + '" width="252" height="170" />';
+            else
+                sliderIMG += '<img alt="Store Image" class="storeImage"  title ="Store Image" src="images/store_img/' + format + '/' + format + '.jpg" width="252" height="170" />'
+
+        }
+        sliderIMG += '<map name="img1map">';
+        sliderIMG += '<area href="#img1map-area1" shape="rect" coords="100,100,200,200" />';
+        sliderIMG += '<area href="#img1map-area2" shape="rect" coords="300,100,400,200" />';
+        sliderIMG += '</map>';
+        imgDiv.innerHTML = sliderIMG;
+        effectsDemo2 = 'fade';
+        var demoSlider_2 = Sliderman.slider({
+            container: 'SliderName_2', width: 352, height: 220, effects: effectsDemo2,
+            display: {
+                autoplay: 0,
+                loading: { background: '#000000', opacity: 0.5, image: 'images/slider/loading.gif' },
+                buttons: { hide: true, opacity: 1, prev: { className: 'SliderNamePrev_2', label: '' }, next: { className: 'SliderNameNext_2', label: '' } },
+                description: { hide: true, background: '#000000', opacity: 0.4, height: 50, position: 'bottom' },
+                navigation: { container: 'SliderNameNavigation_2', label: '<img src="images/slider/clear.gif" />' }
+            }
+        });
+        demoSlider_2.go(1);
+    }
+}
+
+///End ModalWindow.js
+
+var map, Modalmap;
+var geocoder;
+var initialLocation;
+var MarkerArray = [];
+var SerachByUserLocationFlag = new Boolean();
+var MarkerUserLocationSerach = [];
+var browserSupportFlag = new Boolean();
+var infowindow;
+var directionsService;
+var directionDisplay;
+
+var ZometoStoreMarkerArray = [];
+function initialize() {
+    try {
+        var myOptions =
+        {
+            zoom: 5,
+            center: new google.maps.LatLng(21.15746, 78.997101),
+            panControl: true,
+            zoomControl: true,
+            scaleControl: true,
+            streetViewControl: false,
+            mapTypeId: google.maps.MapTypeId.ROADMAP
+        }
+        map = new google.maps.Map(document.getElementById("map_canvas"), myOptions);// bind map
+    }
+    catch (err) {
+        document.getElementById("map_canvas").innerHTML = "<h2 style='color:#0C9AD7;halign:middle;text-align:center; width:100%;height:90%;v-align:center;'>THIS SERVICE REQUIRED INTERNET ACCESS.<br/> PLEASE CONTACT YOUR SERVICE PROVIDER FOR MORE DETAILS.</h2>";
+    }
+
+    // autocomplete
+    var southWest = new google.maps.LatLng(6.747139, 68.16238599999997);
+    var northEast = new google.maps.LatLng(35.5071565, 97.39555500000006);
+    var bounds = new google.maps.LatLngBounds(southWest, northEast);
+    //  var input = document.getElementById('address');
+    var autocomplete = new google.maps.places.Autocomplete(document.getElementById('address'));//bind maps addressinput
+    autocomplete.setBounds(bounds);
+
+    //adding the geo coding option;
+    geocoder = new google.maps.Geocoder();
+    infowindow = new google.maps.InfoWindow(
+        {
+            maxWidth: 400
+        });
+    directionsService = new google.maps.DirectionsService();
+    directionsDisplay = new google.maps.DirectionsRenderer();
+    directionsDisplay.setMap(map);
+    directionsDisplay.setPanel(document.getElementById("directionsPanel"));
+    //Function to Check Browser Compatibility for Client location
+    google.maps.event.trigger(map, 'resize')
+    // getAddress();
+    // insert the current location city on to the search text box....
+
+    map = new google.maps.Map(document.getElementById("map_canvas"), myOptions);
+    google.maps.event.addListener(map, "click", function (event) {
+        infowindow.close();
+    });
+
+    getUserCurrentLocation();
+
+}
+
+//***********************
+//*******************************************
+//Fumction to get the current Geolocation of the user and add that into the search text box...
+//*******************************************
+
+function getUserCurrentLocation() {
+    try {
+
+        var initialLocation = null;
+
+        if (navigator.geolocation) {
+            browserSupportFlag = true;
+            navigator.geolocation.getCurrentPosition(function (position) {
+                initialLocation = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
+                //contentString = "Location found using W3C standard";
+                getStoresFromUserLocation(initialLocation);
+
+                return;
+            }, function () {
+                handleNoGeolocation(browserSupportFlag);
+            });
+        }
+        else if (google.gears) {
+            // Try Google Gears Geolocation
+            browserSupportFlag = true;
+
+            var geo = google.gears.factory.create('beta.geolocation');
+            geo.getCurrentPosition(function (position) {
+                initialLocation = new google.maps.LatLng(position.latitude, position.longitude);
+                getStoresFromUserLocation(initialLocation);
+                return;
+            }, function () {
+                handleNoGeolocation(browserSupportFlag);
+            });
+        }
+        else if (google.loader.ClientLocation) {
+            // Browser doesn't support Geolocation
+            browserSupportFlag = true;
+
+            initialLocation = new google.maps.LatLng(google.loader.ClientLocation.latitude, google.loader.ClientLocation.longitude);
+            getStoresFromUserLocation(initialLocation);
+            return;
+        }
+        else {
+            browserSupportFlag = false;
+            handleNoGeolocation(browserSupportFlag);
+
+        }
+
+    }
+    catch (e) {
+        //    alert(e.message);
+    }
+
+}
+
+function handleNoGeolocation(errorFlag) {
+    var india = new google.maps.LatLng(21.15746, 78.997101);
+    if (errorFlag == true) {
+        initialLocation = india;
+    } else {
+        initialLocation = india;
+    }
+    flagFoundGeolocation = false;
+    map.setCenter(initialLocation);
+    map.setZoom(5);
+    //alert("asdasd");
+    //codeAddressFormat('All', 500,'India','false');
+}
+
+function getStoresFromUserLocation(UserPosition) {
+    //var initialLocation = new google.maps.LatLng(26.509905, 75.981445);
+    //alert("auto");
+    //alert(document.getElementById('Items5').value);
+    geocoder.geocode({ 'latLng': UserPosition }, function (results, status) {
+        if (status == google.maps.GeocoderStatus.OK) {
+            FlagForIndiaAddress = findRegion(results[0]);
+            if (FlagForIndiaAddress == "India") {
+                document.getElementById("address").value = getFormatedAddress(results[0]); //results[0].formatted_address;
+                codeAddressFormat(document.getElementById('Items5').value, document.getElementById('BufferDistance').value, document.getElementById("address").value, 'false');
+            }
+        }
+        else {
+            //alert("Geocode was not successful for the following reason: " + status);
+            //  ShowMessage('sidePanel', 'No Store Found');
+        }
+    });
+}
+//*************************************
+//function to get the city and state address
+function getFormatedAddress(result) {
+    var add = "";
+    for (var i = 0; i < result.address_components.length; i++) {
+        if (result.address_components[i].types[0] == "locality") {
+            add += result.address_components[i].long_name + " , ";
+        }
+
+        if (result.address_components[i].types[0] == "administrative_area_level_1") {
+            add += result.address_components[i].long_name;
+        }
+    }
+    return add;
+}
+
+
+//****************************************************************************
+//
+//***********Clear Markers**********************
+
+function ClearMarkers(Marker, flag) {
+
+    if (Marker) {
+        for (i in Marker) {
+            Marker[i].setMap(null);
+            if (flag == false) {
+                var child = document.getElementById(Marker[i].getTitle());
+                child.style.display = 'none';
+            }
+        }
+        if (flag) {
+            Marker = [];
+        }
+    }
+    //Marker.infowindow.close();
+}
+
+function ZoomToStore(lat, lng) {
+    var pnt = new google.maps.LatLng(lat, lng);
+    map.setCenter(pnt);
+    map.setZoom(20);
+}
+///////////////////
+
+/**
+* Sliderman.js
+* Version: 1.3.5
+* Author: Taras Ozarko (tozarko@gmail.com)
+*
+* (c) 2010-2011 Devtrix. All rights reserved. http://www.devtrix.net/sliderman/
+**/
+
+var Sliderman = new function () {
+    var Sliderman = this;
+
+    function foreach(o, f) { for (var k in o) if (o.hasOwnProperty(k) && f(k, o[k], o)) return; }
+    function is_array(a) { return a && a.constructor == Array; }
+    function is_string(a) { return typeof (a) == 'string'; }
+    function is_function(a) { return typeof (a) == 'function'; }
+    function now() { return (new Date()).getTime(); }
+    function this_blur() { this.blur(); }
+
+    function random(l) {
+        r = Math.round(Math.random() * (l + 1));
+        if (r > 0 && r < l + 1) r--;
+        else r = random(l);
+        return r;
+    } //random
+
+    function addElementEvent(o, e, f) {
+        var of = o[e];
+        var f2 = function () { of(); f(); }
+        o[e] = !is_function(of) ? f : f2;
+    } //addElementEvent
+
+    var _loadImage = [];
+    function loadImage(s, f, always_show_loading) {
+        var i_onload = function () { _loadImage[s] = true; if (f) f(s); }
+        var l = function () { if (_loadImage[s]) { if (f) f(s); } else { var i = newElement('IMG'); i.onload = i_onload; new function () { i.src = s; }; } }
+        if (always_show_loading) setTimeout(l, typeof (always_show_loading) == 'number' ? always_show_loading : 1000);
+        else l();
+    } //loadImage
+
+    function array_copy(a) {
+        if (is_array(a)) var r = [];
+        else var r = {};
+        foreach(a, function (i) { r[i] = typeof (a[i]) != 'object' ? a[i] : array_copy(a[i]); });
+        return r;
+    } //array_copy
+
+    function eq(a, b) {
+        return String(a).replace(/^\s+/, '').replace(/\s+$/, '').toLowerCase() == String(b).replace(/^\s+/, '').replace(/\s+$/, '').toLowerCase();
+    } //eq
+
+    function array_search(arr, a, b) {
+        var result = false;
+        if (!b) {
+            foreach(arr, function (i) {
+                if (eq(arr[i], b)) {
+                    result = i;
+                    return true;
+                }
+            });
+        }
+        else {
+            foreach(arr, function (i) {
+                if (eq(arr[i][a], b)) {
+                    result = i;
+                    return true;
+                }
+            });
+        }
+        return result;
+    } //array_search
+
+    function validateOption(a, b) {
+        b = b.split(',');
+        var result;
+        foreach(b, function (i) {
+            result = b[i];
+            if (eq(a, b[i])) return true;
+        });
+        return result;
+    } //validateOption
+
+    var setOpacity;
+    function setOpacityInit() {
+        if (setOpacity) return;
+        var p, b = document.body, s = b.style;
+        if (is_string(s.opacity)) p = 'opacity';
+        else if (is_string(s.MozOpacity)) p = 'MozOpacity';
+        else if (is_string(s.KhtmlOpacity)) p = 'KhtmlOpacity';
+        else if (b.filters && navigator.appVersion.match(/MSIE ([\d.]+);/)[1] >= 5.5) p = 'filter';
+        if (p == 'filter') {
+            setOpacity = function (style, v) {
+                if (v > 1) v = 1;
+                else if (v < 0) v = 0;
+                style[p] = "alpha(opacity=" + Math.round(v * 100) + ")";
+            }
+        } else if (p) {
+            setOpacity = function (style, v) {
+                if (v > 1) v = 1;
+                else if (v < 0) v = 0;
+                style[p] = v.toFixed(2);
+            }
+        } else setOpacity = ef
+    } //setOpacityInit
+
+    function setStyle(style, property, value) {
+        if (is_string(value)) style[property] = value;
+        else if (property == 'clip') style[property] = 'rect(' + Math.round(value[0]) + 'px, ' + Math.round(value[1]) + 'px, ' + Math.round(value[2]) + 'px, ' + Math.round(value[3]) + 'px)';
+        else if (property == 'opacity') setOpacity(style, value);
+        else style[property] = Math.round(value) + 'px';
+    } //setStyle
+    function setStyles(style, properties) {
+        foreach(properties, function (property) {
+            setStyle(style, property, properties[property]);
+        });
+    }
+    function hide(style) { style.display = 'none'; }
+    function show(style) { style.display = ''; }
+
+    function newElement(tagName, styles) {
+        var e = document.createElement(tagName);
+        if (styles) setStyles(e.style, styles);
+        return e;
+    } //newElement
+
+    var definedObjects = [];
+    function defineObject(t, o) {
+        if (!is_array(definedObjects[t])) definedObjects[t] = [];
+        if (o) {
+            var n = -1, i;
+            if (o.name) {
+                if (i = array_search(definedObjects[t], 'name', o.name)) n = i;
+            } else o.name = 'Sliderman-nameless-object-' + definedObjects[t].length;
+            if (n >= 0) definedObjects[t][n] = o;
+            else definedObjects[t].push(o);
+        }
+    } //defineObjects
+    Sliderman.easing = function (e) { defineObject('easing', e); }
+    Sliderman.order = function (e) { defineObject('order', e); }
+    Sliderman.effect = function (e) { defineObject('effect', EffectObject(e)); }
+
+    function getDefinedObjects(t) {
+        return definedObjects[t];
+    } //getDefinedObjects
+
+    function getDefinedObject(t, n) {
+        var a = getDefinedObjects(t), i;
+        return is_array(a) && (i = array_search(a, 'name', n)) ? a[i] : false;
+    } //getDefinedObject
+
+    var _EffectObject = 0;
+    function EffectObject(a) {
+        if (typeof (a) != 'object') a = {};
+        if (!a.name) a.name = 'Sliderman-nameless-effect-' + _EffectObject++;
+        a.interval = parseInt(a.interval) || 40; a.duration = parseInt(a.duration) || 200; a.delay = parseInt(a.delay) || 0;
+        a.cols = parseInt(a.cols) || 1; a.rows = parseInt(a.rows) || 1; a.count = a.cols * a.rows;
+        a.top = a.top ? true : false; a.right = a.right ? true : false; a.bottom = a.bottom ? true : false; a.left = a.left ? true : false;
+        a.fade = a.fade ? true : false; a.zoom = a.zoom ? true : false; a.move = a.move ? true : false, a.chess = a.chess ? true : false;
+        a.easing = getDefinedObject('easing', a.easing) ? a.easing : 'swing';
+        a.order = getDefinedObject('order', a.order) ? a.order : 'random'; a.order_cache_id = [a.order, a.cols, a.rows, a.road, a.reverse].join(',');
+        a.cache_id = [a.interval, a.duration, a.delay, a.top, a.right, a.bottom, a.left, a.fade, a.zoom, a.move, a.chess, a.order_cache_id].join(',');
+        a.cacheId = function () { return a.cache_id + (a.order == 'random' ? now() : ''); }
+        a.frames_count = Math.round(a.duration / a.interval); a.easingArr = getEasing(a);
+        a.P = []; a.pieces = function (w, h) {
+            w /= a.cols; h /= a.rows; var wh = w + 'x' + h; if (!a.P[wh]) {
+                a.P[wh] = { width: w, height: h };
+                for (var c = 0; c < a.cols; c++) for (var r = 0; r < a.rows; r++) a.P[wh][r + ',' + c] = [r * h, c * w + w, r * h + h, c * w];
+            } return a.P[wh];
+        }
+        return a;
+    } //EffectObject
+
+    function slideContainer(slidesContainer, display) {
+        var container = newElement('div', { width: display.width, height: display.height, position: 'absolute', top: 0, left: 0, overflow: 'hidden' });
+        slidesContainer.appendChild(container);
+        return container;
+    } //slideContainer
+
+    var EffectsArr = [];
+    function Effects(parameters) {
+        var effect = parameters.effect, display = parameters.display;
+        if (parameters.contentmode) effect.zoom = false;
+        var cr, piece, r, image, startStylesArr = [], AnimateArr = [], needAnimate = [], AnimateItemsArr = [], styleStart, styleEnd, styleDif;
+
+        var container = slideContainer(parameters.container, display);
+
+        var pieces = effect.pieces(display.width, display.height);
+        var e_top, e_bottom, e_left, e_right;
+        var effectsOptStr = effect.cacheId();
+        var frameN;
+        var orderArr = getOrder(effect);
+
+        if (EffectsArr[effectsOptStr]) {
+            startStylesArr = EffectsArr[effectsOptStr].startStylesArr;
+            AnimateArr = EffectsArr[effectsOptStr].AnimateArr;
+            needAnimate = EffectsArr[effectsOptStr].needAnimate;
+        } else {
+            for (r = 0; r < effect.rows; r++) for (c = 0; c < effect.cols; c++) {
+                cr = r + ',' + c;
+                if (effect.chess && orderArr[cr] % 2 == 1) {
+                    e_top = effect.bottom; e_bottom = effect.top;
+                    e_left = effect.right; e_right = effect.left;
+                } else {
+                    e_top = effect.top; e_bottom = effect.bottom;
+                    e_left = effect.left; e_right = effect.right;
+                }
+
+                styleStart = { top: 0, left: 0, opacity: 1, width: display.width, height: display.height, overflow: 'hidden' };
+                styleEnd = array_copy(styleStart); piece = array_copy(pieces[cr]);
+
+                if (effect.fade) styleStart.opacity = 0;
+
+                if (e_top && e_bottom) piece[0] = piece[2] = (piece[0] + piece[2]) / 2;
+                else if (e_top) piece[2] -= pieces.height;
+                else if (e_bottom) piece[0] += pieces.height;
+                if (e_left && e_right) piece[1] = piece[3] = (piece[1] + piece[3]) / 2;
+                else if (e_left) piece[1] -= pieces.width;
+                else if (e_right) piece[3] += pieces.width;
+
+                if (effect.zoom) {
+                    styleStart.left = pieces[cr][3];
+                    styleStart.top = pieces[cr][0];
+                    if (e_left && e_right) styleStart.left += pieces.width / 2;
+                    else if (e_right) styleStart.left += pieces.width;
+                    else if (!e_left) styleStart.left = 0;
+                    if (e_top && e_bottom) styleStart.top += pieces.height / 2;
+                    else if (e_bottom) styleStart.top += pieces.height;
+                    else if (!e_top) styleStart.top = 0;
+                    if (e_left || e_right) piece[1] = piece[3] = 0;
+                    if (e_top || e_bottom) piece[0] = piece[2] = 0;
+                    styleStart.width = e_left || e_right ? 0 : display.width;
+                    styleStart.height = e_top || e_bottom ? 0 : display.height;
+                }
+
+                if (effect.move) {
+                    if (e_top) {
+                        styleStart.top = parseInt(styleStart.top) - pieces.height;
+                        piece[0] += pieces.height; piece[2] += pieces.height;
+                    }
+                    if (e_bottom) {
+                        styleStart.top = parseInt(styleStart.top) + pieces.height;
+                        piece[0] -= pieces.height; piece[2] -= pieces.height;
+                    }
+                    if (e_left) {
+                        styleStart.left = parseInt(styleStart.left) - pieces.width;
+                        piece[1] += pieces.width; piece[3] += pieces.width;
+                    }
+                    if (e_right) {
+                        styleStart.left = parseInt(styleStart.left) + pieces.width;
+                        piece[1] -= pieces.width; piece[3] -= pieces.width;
+                    }
+                }
+
+                styleStart.clip = piece;
+                styleEnd.clip = pieces[cr];
+
+                styleDif = [];
+                foreach(styleEnd, function (property) {
+                    if (styleStart[property].toString() != styleEnd[property].toString()) {
+                        styleDif[property] = [];
+                        if (property == 'clip') {
+                            foreach(styleStart[property], function (n) {
+                                styleDif[property][n] = styleEnd[property][n] - styleStart[property][n];
+                            });
+                        } else styleDif[property] = styleEnd[property] - styleStart[property];
+                        needAnimate[cr] = true;
+                    }
+                });
+
+                startStylesArr[cr] = styleStart; AnimateArr[cr] = [];
+                if (effect.delay) for (var n = 0; n < Math.round(orderArr[cr] * effect.delay / effect.interval); n++) AnimateArr[cr].push(null);
+
+                if (!needAnimate[cr]) AnimateArr[cr].push({ display: '' });
+                else for (frameN = 1; frameN <= effect.frames_count; frameN++) {
+                    var style_c = [];
+                    if (frameN == effect.frames_count) style_c = styleEnd;
+                    else {
+                        foreach(styleDif, function (property) {
+                            value = [];
+                            if (property == 'clip') {
+                                foreach(styleDif[property], function (n) {
+                                    value[n] = styleStart[property][n] + styleDif[property][n] * effect.easingArr[frameN]
+                                });
+                            } else value = styleStart[property] + styleDif[property] * effect.easingArr[frameN]
+                            style_c[property] = value;
+                        });
+                    }
+                    AnimateArr[cr].push(style_c);
+                }
+
+            } //for
+            EffectsArr[effectsOptStr] = { startStylesArr: startStylesArr, AnimateArr: AnimateArr, needAnimate: needAnimate };
+        }
+
+        for (r = 0; r < effect.rows; r++) for (c = 0; c < effect.cols; c++) {
+            cr = r + ',' + c;
+            if (parameters.contentmode) {
+                image = newElement('DIV', startStylesArr[cr]);
+                image.appendChild(parameters.src.cloneNode(true));
+            } else {
+                image = newElement('IMG', startStylesArr[cr]);
+                image.src = parameters.src;
+            }
+            var style = image.style;
+            style.position = 'absolute';
+            container.appendChild(image);
+            AnimateItemsArr[cr] = style;
+            if (!needAnimate[cr]) hide(AnimateItemsArr[cr]);
+        }
+
+        //ANIMATE
+        var time_s = now();
+        var framesCountAll = 1;
+        foreach(AnimateArr, function (index) { framesCountAll = Math.max(AnimateArr[index].length, framesCountAll); });
+        var AnimateItem, AnimateItemsComplete = [], timerFuncStatus = true, timerFunc = function () {
+            if (timerFuncStatus) {
+                var frameC = Math.ceil((now() - time_s) / effect.interval);
+                frameC = frameC >= framesCountAll ? framesCountAll - 1 : frameC - 1;
+                foreach(AnimateArr, function (index) {
+                    AnimateItem = frameC > AnimateArr[index].length - 1 ? AnimateArr[index].length - 1 : frameC;
+                    if (AnimateArr[index][AnimateItem] && !AnimateItemsComplete[index + ',' + AnimateItem]) {
+                        setStyles(AnimateItemsArr[index], AnimateArr[index][AnimateItem]);
+                        AnimateItemsComplete[index + ',' + AnimateItem] = true;
+                    }
+                });
+                if (frameC == framesCountAll - 1) {
+                    if (effect.count > 1) {
+                        container.innerHTML = '';
+                        if (parameters.contentmode) container.appendChild(parameters.src);
+                        else container.innerHTML = '<img src="' + parameters.src + '" width="' + display.width + '" height="' + display.height + '" />';
+                    }
+                    parameters.callback(container);
+                    timerFuncStatus = false;
+                }
+            }
+            return timerFuncStatus;
+        };
+        var animateInterval = setInterval(function () {
+            if (!timerFunc()) clearInterval(animateInterval);
+        }, effect.interval);
+
+    } //Effects
+    function getOrder(effect) {
+        var a = [], o, m = 0;
+        if (effect.count > 1) {
+            o = getDefinedObject('order', effect.order);
+            if (!is_array(o.cache)) o.cache = [];
+            if (o.nocache || !o.cache[effect.order_cache_id]) {
+                a = o.method(effect);
+                if (effect.reverse) {
+                    foreach(a, function (i, v) { m = Math.max(m, v); });
+                    foreach(a, function (i) { a[i] = m - a[i]; });
+                }
+                o.cache[effect.order_cache_id] = a;
+            }
+            a = o.cache[effect.order_cache_id];
+        } else a['0,0'] = 0;
+        return a;
+    } //getOrder
+
+    function getEasing(effect) {
+        var o = getDefinedObject('easing', effect.easing), i, c = effect.frames_count;
+        if (!is_array(o.cache)) o.cache = [];
+        if (!o.cache[c]) {
+            o.cache[c] = [];
+            for (i = 1; i <= c; i++) o.cache[c][i] = o.method(i / c);
+        }
+        return o.cache[c];
+    } //getEasing
+
+    Sliderman.slider = function (parameters) {
+        setOpacityInit();
+
+        var Slider = {}, current = null, previous = null, EffectN = 0, nextIndex = null, prevImg, status = 'free', isHover = false, images = [], descriptions = [], links = [], ef = function () { };
+
+        //EVENTS
+        var events = parameters.events, eventCall = events ? function (e) { if (events[e] && is_function(events[e])) events[e](Slider); } : ef;
+        var contentmode = parameters.contentmode;
+
+        //SLIDER EFECTS
+        var effects = [];
+        var effectsNames = [];
+        var addEffect = function (e) {
+            if (is_string(e)) {
+                e = e.split(',');
+                if (e.length == 1) {
+                    var globalEffect = getDefinedObject('effect', e[0]);
+                    if (globalEffect) addEffect(globalEffect);
+                } else for (var i = 0; i < e.length; i++) addEffect(e[i]);
+            } else if (e) {
+                e = EffectObject(e);
+                var effectsId = array_search(effects, 'name', e.name);
+                if (!effectsId) effectsId = effects.length;
+                effectsNames.push(e.name);
+                effects[effectsId] = array_copy(e);
+            }
+        } //addEffect
+        var getEffect = function () {
+            var n = 0;
+            if (effects.length > 1) {
+                switch (display.effects_order) {
+                    case 'slides': n = current % effectsNames.length; break;
+                    case 'effects': n = EffectN % effectsNames.length; break;
+                    default: /*random*/
+                        n = random(effectsNames.length);
+                }
+            }
+            EffectN++;
+            return effects[array_search(effects, 'name', effectsNames[n])];
+        } //getEffect
+        if (parameters.effects) {
+            if (!is_array(parameters.effects)) parameters.effects = [parameters.effects];
+            for (var i = 0; i < parameters.effects.length; i++) addEffect(parameters.effects[i]);
+        } else parameters.effects = [];
+        if (!effects.length) effects = array_copy(getDefinedObjects('effect'));
+
+        //OPTIONS
+        var display = parameters.display || {};
+        display.width = parameters.width;
+        display.height = parameters.height;
+        var loading = display.loading || {};
+        var description = display.description || null;
+        var navigation = display.navigation || null;
+        var buttons = display.buttons || null;
+
+        Slider.random = function () {
+            var r = random(images.length);
+            return images.length > 1 && r == current ? Slider.random() : Slider.go(r);
+        }
+        Slider.next = function () {
+            var r = Slider.go(current === null ? 0 : current + 1);
+            if (display.loop && r) {
+                autoplayCount++;
+                if (autoplayCount + 1 >= images.length * display.loop) autoplay = ef;
+            }
+            return r;
+        }
+        Slider.prev = function () {
+            var r = Slider.go(current === null ? -1 : current - 1);
+            if (display.loop && r) autoplayCount--;
+            return r;
+        }
+        Slider.go = function (index) {
+            index = (images.length + index) % images.length;
+            autoplay(false);
+            if (status != 'free') nextIndex = index;
+            if (status != 'free' || current == index) return autoplay(true) && false;
+            previous = current;
+            current = index;
+            eventCall('loading');
+            showLoading(true);
+            //alert(images[current]);
+            if (contentmode) doEffect(images[current]);
+            else loadImage(images[current], doEffect, display.always_show_loading);
+            return true;
+        } //go
+        Slider.get = function (a) {
+            switch (a) {
+                case 'length': return images.length; break;
+                case 'current': return current; break;
+                case 'previous': return previous; break;
+                case 'images': return images; break;
+                case 'links': return links; break;
+                case 'descriptions': return descriptions; break;
+            }
+        } //get
+        var autoplayStatus = 'stop'; //play,pause,stop
+        Slider.play = function () {
+            if (!display.autoplay) return;
+            if (autoplayStatus != 'play') {
+                var s = autoplayStatus == 'stop';
+                autoplayStatus = 'play';
+                if (s) (display.random ? Slider.random : Slider.go)(0);
+                else autoplay(true);
+            }
+        } //play
+        Slider.pause = function () {
+            if (!display.autoplay) return;
+            if (autoplayStatus == 'pause') Slider.play();
+            else if (autoplayStatus == 'play') {
+                autoplayStatus = 'pause';
+                autoplay(false);
+            }
+        } //pause
+        Slider.stop = function () {
+            if (!display.autoplay) return;
+            autoplayStatus = 'stop';
+            current = null;
+            previous = null;
+            nextIndex = null;
+            EffectN = 0;
+            autoplay(false);
+            removePrevImg();
+            if (display.first_slide) displayFirstSlide();
+            update();
+        } //stop
+        Slider.start = function () {
+            if (!display.autoplay) return;
+            Slider.stop();
+            Slider.play();
+        } //start
+
+        var removePrevImg = function () {
+            if (prevImg && status == 'free') {
+                prevImg.parentNode.removeChild(prevImg);
+                prevImg = null;
+            }
+        } //removePrevImg
+
+        function displayFirstSlide() {
+            var c = slideContainer(imagesCont, display);
+            if (parameters.contentmode) c.appendChild(images[0]);
+            else c.innerHTML = '<img src="' + images[0] + '" width="' + display.width + '" height="' + display.height + '" />';
+            EffectN = 1;
+            previous = null;
+            current = 0;
+        } //displayFirstSlide
+
+        function update() {
+            descriptionShow(); linkUpd(); navigationUpd();
+        } //update
+
+        var styleDef = { width: display.width, height: display.height, position: 'absolute', top: 0, left: 0, display: 'block' };
+
+        var mainCont = document.getElementById(parameters.container);
+        function addElementEventOnmouseover() {
+            isHover = true;
+            if (buttons && buttons.hide) show(buttonsCont.style);
+            if (description && description.hide && !contentmode) show(descriptionCont.style);
+            if (display.pause) autoplay(false);
+        }
+        addElementEvent(mainCont, 'onmouseover', addElementEventOnmouseover);
+        function addElementEventOnmouseout() {
+            isHover = false;
+            if (buttons && buttons.hide) hide(buttonsCont.style);
+            if (description && description.hide && !contentmode) hide(descriptionCont.style);
+            if (display.pause) autoplay(true);
+        }
+        addElementEvent(mainCont, 'onmouseout', addElementEventOnmouseout);
+
+        //GET CONTENT
+        var maps = document.getElementsByTagName('MAP');
+        for (var i = 0; i < mainCont.childNodes.length; i++) if (mainCont.childNodes[i].nodeType == 1) {
+            if (contentmode) images.push(mainCont.childNodes[i].cloneNode(true));
+            else {
+                switch (mainCont.childNodes[i].tagName) {
+                    case 'A':
+                        var img = mainCont.childNodes[i].getElementsByTagName('IMG');
+                        if (img.length) {
+                            images.push(img[0].src);
+                            links[images.length - 1] = mainCont.childNodes[i];
+                        } else descriptions[images.length - 1] = mainCont.childNodes[i];
+                        break;
+                    case 'IMG':
+                        images.push(mainCont.childNodes[i].src);
+                        if (mainCont.childNodes[i].useMap && maps.length) for (var m = 0; m < maps.length; m++) {
+                            if (maps[m].name && mainCont.childNodes[i].useMap.replace(/^[^#]*#/, '') == maps[m].name) links[images.length - 1] = maps[m];
+                        }
+                        break;
+                    case 'MAP': continue; break;
+                    default: descriptions[images.length - 1] = mainCont.childNodes[i];
+                }
+            }
+            hide(mainCont.childNodes[i].style);
+        }
+        if (!contentmode) for (var i = 0; i < images.length; i++) loadImage(images[i]);
+
+        //CONTAINERS
+        var sliderCont = newElement('DIV', { width: display.width, height: display.height, position: 'relative' }); mainCont.appendChild(sliderCont);
+        var imagesCont = newElement('DIV', styleDef); sliderCont.appendChild(imagesCont);
+        partsCont = sliderCont;
+
+        //LINKS
+        if (contentmode) var linkUpd = ef;
+        else {
+            var lnk = newElement('DIV', styleDef); partsCont.appendChild(lnk);
+            var linkUpd = function () {
+                lnk.innerHTML = ''; value = links[current];
+                if (value) {
+                    if (value.tagName == 'MAP') {
+                        var a = newElement('IMG', styleDef);
+                        a.src = images[current]; a.useMap = '#' + value.name;
+                    } else {
+                        var a = newElement('A', styleDef);
+                        a.href = value.href; a.target = value.target;
+                    }
+                    setStyles(a.style, { opacity: 0, background: '#000000' });
+                    a.onfocus = this_blur;
+                    lnk.appendChild(a);
+                }
+            }
+        }
+
+        //LOADING
+        if (contentmode) var showLoading = ef;
+        else {
+            var loadingCont = newElement('DIV'); partsCont.appendChild(loadingCont);
+            hide(loadingCont.style);
+            if (loading.background) {
+                var loadingBgStyle = array_copy(styleDef);
+                loadingBgStyle.background = loading.background;
+                if (loading.opacity) loadingBgStyle.opacity = loading.opacity;
+                loadingCont.appendChild(newElement('DIV', loadingBgStyle));
+            }
+            if (loading.image) {
+                var loadingImgStyle = array_copy(styleDef);
+                loadingImgStyle.background = 'url(' + (loading.image) + ') no-repeat center center';
+                loadingCont.appendChild(newElement('DIV', loadingImgStyle));
+            }
+            var showLoading = function (a) {
+                if (a) show(loadingCont.style);
+                else hide(loadingCont.style);
+                status = a ? 'loading' : 'free';
+            }
+        }
+
+        //DESCRIPTION
+        var descriptionShow;
+        if (description && !contentmode) {
+            var descriptionCont = newElement('DIV'); partsCont.appendChild(descriptionCont);
+            if (description.hide) hide(descriptionCont.style);
+
+            var descriptionStl = { position: 'absolute', overflow: 'hidden', textAlign: 'left' };
+            if (!description) description = [];
+            description.position = validateOption(description.position, 'top,left,right,bottom')
+            descriptionStl.background = description.background || 'white';
+            descriptionStl.opacity = description.opacity || 0.5;
+            descriptionStl.width = description.position == 'top' || description.position == 'bottom' ? display.width : description.width || display.width * 0.2;
+            descriptionStl.height = description.position == 'left' || description.position == 'right' ? display.height : description.height || display.height * 0.2;
+            descriptionStl[description.position == 'bottom' ? 'bottom' : 'top'] = 0;
+            descriptionStl[description.position == 'right' ? 'right' : 'left'] = 0;
+
+            var descBg = newElement('DIV', descriptionStl); descriptionCont.appendChild(descBg);
+            descriptionStl.opacity = 1; descriptionStl.background = '';
+            var desc = newElement('DIV', descriptionStl); descriptionCont.appendChild(desc);
+
+            function descriptionShow() {
+                desc.innerHTML = '';
+                setStyle(descriptionCont.style, 'visibility', 'hidden');
+                var value = descriptions[current];
+                if (value) {
+                    setStyle(descriptionCont.style, 'visibility', 'visible');
+                    value = value.cloneNode(true);
+                    show(value.style);
+                    desc.appendChild(value);
+                    if (isHover) show(descriptionCont.style);
+                }
+            }
+        } else descriptionShow = ef
+
+        //BUTTONS
+        if (buttons) {
+            var buttonsCont = newElement('DIV'); partsCont.appendChild(buttonsCont);
+            if (buttons.hide) hide(buttonsCont.style);
+            var btnPrev = newElement('A'); buttonsCont.appendChild(btnPrev);
+            btnPrev.href = 'javascript:void(0);';
+            var btnNext = btnPrev.cloneNode(true); buttonsCont.appendChild(btnNext);
+            btnPrev.onfocus = this_blur;
+            btnNext.onfocus = this_blur;
+            btnPrev.onclick = Slider.prev;
+            btnNext.onclick = Slider.next;
+            if (buttons.prev.label) btnPrev.innerHTML = is_string(buttons.prev.label) ? buttons.prev.label : 'prev';
+            if (buttons.prev.label) btnNext.innerHTML = is_string(buttons.next.label) ? buttons.next.label : 'next';
+            if (buttons.prev.className) btnPrev.className = buttons.prev.className;
+            if (buttons.next.className) btnNext.className = buttons.next.className;
+            if (buttons.opacity || buttons.prev.opacity) setOpacity(btnPrev.style, buttons.opacity || buttons.prev.opacity);
+            if (buttons.opacity || buttons.next.opacity) setOpacity(btnNext.style, buttons.opacity || buttons.next.opacity);
+        }
+
+        //NAVIGATION
+        var navigationUpd;
+        if (navigation) {
+            var navigationCont = document.getElementById(navigation.container);
+            var a;
+
+            if (navigation.prev) {
+                a = newElement('A');
+                if (navigation.prev.label) a.innerHTML = is_string(navigation.prev.label) ? navigation.prev.label : 'Prev';
+                if (navigation.prev.className) a.className = navigation.prev.className;
+                a.href = 'javascript:void(0);';
+                a.onfocus = this_blur;
+                a.onclick = Slider.prev;
+                navigationCont.appendChild(a);
+            }
+
+            var navigationLinks = [];
+            function a_onclick() { Slider.go(this.id.replace(parameters.container + '_SliderNavigation', '')); };
+            for (var i = 0; i < images.length; i++) {
+                a = newElement('A');
+                if (navigation.label) a.innerHTML = is_string(navigation.label) ? navigation.label : i + 1;
+                if (navigation.className) a.className = navigation.className;
+                a.href = 'javascript:void(0);';
+                a.id = parameters.container + '_SliderNavigation' + i;
+                a.onfocus = this_blur;
+                a.onclick = a_onclick;
+                navigationLinks.push(a);
+                navigationCont.appendChild(a);
+            }
+
+            if (navigation.next) {
+                a = newElement('A');
+                if (navigation.next.label) a.innerHTML = is_string(navigation.next.label) ? navigation.next.label : 'Next';
+                if (navigation.next.className) a.className = navigation.next.className;
+                a.href = 'javascript:void(0);';
+                a.onfocus = this_blur;
+                a.onclick = Slider.next;
+                navigationCont.appendChild(a);
+            }
+
+            function navigationUpd() {
+                for (var i = 0; i < navigationLinks.length; i++) navigationLinks[i].className = navigationLinks[i].className.replace(/\bactive\b/g, '');
+                if (navigationLinks[current]) navigationLinks[current].className += ' active';
+            }
+        } else navigationUpd = ef
+
+        //AUTOPLAY
+        var autoplayCount = 0;
+        if (display.autoplay) {
+            var autoplayTimeout;
+            var autoplay = function (a) {
+                if (autoplayTimeout) {
+                    clearTimeout(autoplayTimeout);
+                    autoplayTimeout = null;
+                }
+                if (a && !(isHover && display.pause) && autoplayStatus == 'play') autoplayTimeout = setTimeout(display.random ? Slider.random : Slider.next, display.autoplay);
+            } //autoplay
+        } else var autoplay = ef
+
+        var doEffect = function (src) {
+            if (autoplayStatus == 'stop') autoplayStatus = 'pause';
+            eventCall('before');
+            showLoading(false); status = 'busy'; update();
+            Effects({
+                effect: getEffect(), display: display, container: imagesCont, src: src, callback: function (img) {
+                    status = 'free'; autoplay(true);
+                    removePrevImg();
+                    prevImg = img;
+                    eventCall('after');
+                    if (autoplayStatus == 'stop') removePrevImg();
+                    else if (nextIndex !== null) {
+                        Slider.go(nextIndex);
+                        nextIndex = null;
+                    }
+                }, contentmode: contentmode
+            });
+        };
+
+        if (display.mousewheel) {
+            onmousewheel = function (d) {
+                if (d > 0) Slider.prev();
+                else if (d < 0) Slider.next();
+                return true;
+            };
+            function wheel(event) {
+                var d = 0;
+                if (!event) event = window.event;
+                if (event.wheelDelta) {
+                    d = event.wheelDelta / 120;
+                    if (window.opera) d = -d;
+                } else if (event.detail) d = -event.detail / 3;
+                if (d && onmousewheel(d)) {
+                    if (event.preventDefault) event.preventDefault();
+                    event.returnValue = false;
+                }
+            } //wheel
+            if (mainCont.addEventListener) {
+                mainCont.addEventListener("DOMMouseScroll", wheel, false);
+                mainCont.addEventListener("mousewheel", wheel, false);
+            } else addElementEvent(mainCont, 'onmousewheel', wheel);
+        }
+
+        if (display.first_slide) displayFirstSlide();
+        update();
+        if (typeof (display.autostart) == 'undefined' || display.autostart) Slider.play();
+        return Slider;
+    } //Sliderman.slider
+
+
+}  //Sliderman
+
+/* predefined easing functions */
+Sliderman.easing({ name: 'none', method: function (x) { return x; } });
+Sliderman.easing({ name: 'swing', method: function (x) { return -Math.cos(x * Math.PI) / 2 + 0.5; } });
+Sliderman.easing({ name: 'wave', method: function (t) { return ((Math.cos((1 - t) * 3 * Math.PI + 2 * Math.PI)) * 0.5 + 0.5 + t) / 2; } });
+Sliderman.easing({ name: 'bounce', method: function (t) { return 1 - Math.abs(Math.cos((1 - t) * (2.5 + t * t * 3) * Math.PI + 0.5 * Math.PI) * (1 - t)); } });
+/* predefined order functions */
+Sliderman.order({
+    name: 'straight', method: function (e) {
+        var cols = e.cols, rows = e.rows, road = e.road, count = e.count;
+        var a = [], i = 0, c = 0, r = 0, cl = cols - 1, rl = rows - 1, il = count - 1, cr;
+        for (r = 0; r < rows; r++) for (c = 0; c < cols; c++) {
+            cr = r + ',' + c;
+            switch (road) {
+                case 'BL': a[cr] = il - (c * rows + (rl - r)); break;
+                case 'RT': a[cr] = il - (r * cols + (cl - c)); break;
+                case 'TL': a[cr] = il - (c * rows + r);
+                case 'LT': a[cr] = il - (r * cols + c); break;
+                case 'BR': a[cr] = c * rows + r; break;
+                case 'LB': a[cr] = r * cols + (cl - c); break;
+                case 'TR': a[cr] = c * rows + (rl - r); break;
+                default: a[cr] = r * cols + c; break; //'RB'
+            }
+        }
+        return a;
+    }
+});
+Sliderman.order({
+    name: 'swirl', method: function (e) {
+        var cols = e.cols, rows = e.rows, road = e.road, count = e.count;
+        var a = [], i = 0, c = 0, r = 0, cl = cols - 1, rl = rows - 1, il = count - 1, cr;
+        var courses, course = 0;
+        switch (road) {
+            case 'BL': c = cl; r = 0; courses = ['r+', 'c-', 'r-', 'c+']; break;
+            case 'RT': c = 0; r = rl; courses = ['c+', 'r-', 'c-', 'r+']; break;
+            case 'TL': c = cl; r = rl; courses = ['r-', 'c-', 'r+', 'c+']; break;
+            case 'LT': c = cl; r = rl; courses = ['c-', 'r-', 'c+', 'r+']; break;
+            case 'BR': c = 0; r = 0; courses = ['r+', 'c+', 'r-', 'c-']; break;
+            case 'LB': c = cl; r = 0; courses = ['c-', 'r+', 'c+', 'r-']; break;
+            case 'TR': c = 0; r = rl; courses = ['r-', 'c+', 'r+', 'c-']; break;
+            default: c = 0; r = 0; courses = ['c+', 'r+', 'c-', 'r-']; break; //'RB'
+        }
+        i = 0;
+        while (i < count) {
+            cr = r + ',' + c;
+            if (c >= 0 && c < cols && r >= 0 && r < rows && typeof (a[cr]) == 'undefined') a[cr] = i++;
+            else switch (courses[course++ % courses.length]) { case 'c+': c--; break; case 'r+': r--; break; case 'c-': c++; break; case 'r-': r++; break; }
+            switch (courses[course % courses.length]) { case 'c+': c++; break; case 'r+': r++; break; case 'c-': c--; break; case 'r-': r--; break; }
+        }
+        return a;
+    }
+});
+Sliderman.order({
+    name: 'snake', method: function (e) {
+        var cols = e.cols, rows = e.rows, road = e.road, count = e.count;
+        var a = [], i = 0, c = 0, r = 0, cl = cols - 1, rl = rows - 1, il = count - 1, cr;
+        var courses, course = 0;
+        switch (road) {
+            case 'BL': c = cl; r = 0; courses = ['r+', 'c-', 'r-', 'c-']; break;
+            case 'RT': c = 0; r = rl; courses = ['c+', 'r-', 'c-', 'r-']; break;
+            case 'TL': c = cl; r = rl; courses = ['r-', 'c-', 'r+', 'c-']; break;
+            case 'LT': c = cl; r = rl; courses = ['c-', 'r-', 'c+', 'r-']; break;
+            case 'BR': c = 0; r = 0; courses = ['r+', 'c+', 'r-', 'c+']; break;
+            case 'LB': c = cl; r = 0; courses = ['c-', 'r+', 'c+', 'r+']; break;
+            case 'TR': c = 0; r = rl; courses = ['r-', 'c+', 'r+', 'c+']; break;
+            default: c = 0; r = 0; courses = ['c+', 'r+', 'c-', 'r+']; break; //'RB'
+        }
+        i = 0;
+        while (i < count) {
+            cr = r + ',' + c;
+            if (c >= 0 && c < cols && r >= 0 && r < rows && typeof (a[cr]) == 'undefined') {
+                a[cr] = i++;
+                switch (courses[course % courses.length]) { case 'c+': c++; break; case 'r+': r++; break; case 'c-': c--; break; case 'r-': r--; break; }
+            }
+            else {
+                switch (courses[course++ % courses.length]) { case 'c+': c--; break; case 'r+': r--; break; case 'c-': c++; break; case 'r-': r++; break; }
+                switch (courses[course++ % courses.length]) { case 'c+': c++; break; case 'r+': r++; break; case 'c-': c--; break; case 'r-': r--; break; }
+            }
+        }
+        return a;
+    }
+});
+Sliderman.order({
+    name: 'straight_stairs', method: function (e) {
+        var cols = e.cols, rows = e.rows, road = e.road, count = e.count;
+        var a = [], i = 0, c = 0, r = 0, cl = cols - 1, rl = rows - 1, il = count - 1, cr;
+        switch (road) {
+            case 'BL': case 'TR': case 'TL': case 'BR': var C = 0, R = 0; break;
+            case 'LB': case 'RT': case 'LT': case 'RB': default: road = 'RB'; var C = cl, R = 0; break;
+        }
+        c = C; r = R;
+        while (i < count) {
+            cr = r + ',' + c;
+            if (road.indexOf('T') == 1 || road.indexOf('R') == 1) a[cr] = il - i++;
+            else a[cr] = i++;
+            switch (road) {
+                case 'BL': case 'TR': c--; r++; break;
+                case 'TL': case 'BR': c++; r--; break;
+                case 'LB': case 'RT': c--; r--; break;
+                case 'RB': case 'LT': default: c++; r++; break;
+            }
+            if (c < 0 || r < 0 || c > cl || r > rl) {
+                switch (road) {
+                    case 'BL': case 'TR': C++; break;
+                    case 'LB': case 'RT': case 'TL': case 'BR': R++; break;
+                    case 'RB': case 'LT': default: C--; break;
+                }
+                if (C < 0 || R < 0 || C > cl || R > rl) {
+                    switch (road) {
+                        case 'BL': case 'TR': C = cl; R++; break;
+                        case 'TL': case 'BR': R = rl; C++; break;
+                        case 'LB': case 'RT': R = rl; C--; break;
+                        case 'RB': case 'LT': default: C = 0; R++; break;
+                    }
+                    if (R > rl) R = rl; else if (R < 0) R = 0; else if (C > cl) C = cl; else if (C < 0) C = 0;
+                }
+                r = R; c = C;
+            }
+        }
+        return a;
+    }
+});
+Sliderman.order({
+    name: 'square', method: function (effect) {
+        var cols = effect.cols || 1, rows = effect.rows || 1, arr = [], i = 0, c, r, dc, dr, cr;
+        dc = cols < rows ? (rows - cols) / 2 : 0; dr = cols > rows ? (cols - rows) / 2 : 0; cr = Math.round(Math.max(cols / 2, rows / 2)) + 1;
+        for (c = 0; c < cols; c++) for (r = 0; r < rows; r++) arr[r + ',' + c] = cr - Math.min(c + 1 + dc, r + 1 + dr, cols - c + dc, rows - r + dr);
+        return arr;
+    }
+});
+Sliderman.order({
+    name: 'rectangle', method: function (effect) {
+        var cols = effect.cols || 1, rows = effect.rows || 1, arr = [], i = 0, c, r, cr;
+        cr = Math.round(Math.min(cols / 2, rows / 2)) + 1;
+        for (c = 0; c < cols; c++) for (r = 0; r < rows; r++) arr[r + ',' + c] = cr - Math.min(c + 1, r + 1, cols - c, rows - r);
+        return arr;
+    }
+});
+Sliderman.order({
+    name: 'random', method: function (effect) {
+        var a = [], tmp = [], r, c, i;
+        for (r = 0; r < effect.rows; r++) for (c = 0; c < effect.cols; c++) tmp.push(r + ',' + c);
+        tmp.sort(function (a, b) { return Math.random() > 0.5; });
+        for (i = 0; i < effect.count; i++) a[tmp[i]] = i;
+        return a;
+    }
+});
+Sliderman.order({
+    name: 'circle', method: function (effect) {
+        var cols = effect.cols || 1, rows = effect.rows || 1, arr = [], i = 0, c, r;
+        var hc = cols / 2 - 0.5, hr = rows / 2 - 0.5;
+        for (c = 0; c < cols; c++) for (r = 0; r < rows; r++) arr[r + ',' + c] = Math.round(Math.sqrt(Math.pow(c - hc, 2) + Math.pow(r - hr, 2)));
+        return arr;
+    }
+});
+Sliderman.order({
+    name: 'cross', method: function (effect) {
+        var cols = effect.cols || 1, rows = effect.rows || 1, arr = [], i = 0, c, r;
+        var hc = cols / 2 - 0.5, hr = rows / 2 - 0.5;
+        for (c = 0; c < cols; c++) for (r = 0; r < rows; r++) arr[r + ',' + c] = Math.round(Math.min(Math.abs(c - hc), Math.abs(r - hr)));
+        return arr;
+    }
+});
+Sliderman.order({
+    name: 'rectangle_cross', method: function (effect) {
+        var cols = effect.cols || 1, rows = effect.rows || 1, arr = [], i = 0, c, r;
+        var hc = cols / 2 - 0.5, hr = rows / 2 - 0.5, cr = Math.max(hc, hr) + 1;
+        for (c = 0; c < cols; c++) for (r = 0; r < rows; r++) arr[r + ',' + c] = Math.round(cr - Math.max(hc - Math.abs(c - hc), hr - Math.abs(r - hr))) - 1;
+        return arr;
+    }
+});
+/* predefined effects */
+Sliderman.effect({ name: 'fade', fade: true, duration: 600 });
+Sliderman.effect({ name: 'move', left: true, move: true, duration: 400 });
+Sliderman.effect({ name: 'stairs', cols: 7, rows: 5, delay: 30, order: 'straight_stairs', road: 'BL', fade: true });
+Sliderman.effect({ name: 'blinds', cols: 10, delay: 100, duration: 400, order: 'straight', right: true, zoom: true, fade: true });
+Sliderman.effect({ name: 'rain', cols: 10, delay: 100, duration: 400, order: 'straight', top: true, fade: true });
+
+/***********************************************
+* Switch Content script- &#169; Dynamic Drive (www.dynamicdrive.com)
+* This notice must stay intact for legal use. Last updated April 2nd, 2005.
+* Visit http://www.dynamicdrive.com/ for full source code
+***********************************************/
+
+var enablepersist = "on" //Enable saving state of content structure using session cookies? (on/off)
+var collapseprevious = "yes" //Collapse previously open content when opening present? (yes/no)
+
+//var contractsymbol = '<img align="absmiddle" src="images/minus_symbol.gif"  />&nbsp;&nbsp;' //HTML for contract symbol. For image, use: <img src="whatever.gif">
+//var expandsymbol = '<img align="absmiddle" src="images/plus_symbol.gif"  />&nbsp;&nbsp;' //HTML for expand symbol.
+
+//var contractsymbol = '<img align="absmiddle" src="images/minus_symbol.gif"  />&nbsp;&nbsp;' //HTML for contract symbol. For image, use: <img src="whatever.gif">
+//var expandsymbol = '<img align="absmiddle" src="images/plus_symbol.gif"  />&nbsp;&nbsp;' //HTML for expand symbol.
+
+
+//if (document.getElementById) {
+//    document.write('<style type="text/css">');
+//    document.write('.switchcontent{display:none;}');
+//    document.write('</style>');
+//}
+
+function getElementbyClass(rootobj, classname) {
+    var temparray = new Array();
+    var inc = 0;
+    var rootlength = rootobj.length;
+    for (i = 0; i < rootlength; i++) {
+        if (rootobj[i].className == classname)
+            temparray[inc++] = rootobj[i];
+    }
+    return temparray;
+}
+
+function sweeptoggle(ec) {
+    var thestate = (ec == "expand") ? "block" : "none"
+    var inc = 0
+    while (ccollect[inc]) {
+        ccollect[inc].style.display = thestate
+        inc++
+    }
+    revivestatus();
+}
+
+
+function contractcontent(omit) {
+    var inc = 0
+    while (ccollect[inc]) {
+        if (ccollect[inc].id != omit)
+            ccollect[inc].style.display = "none"
+        inc++
+    }
+}
+
+function expandcontent1(curobj1, cid) {
+    var curobj = document.getElementById(curobj1);
+    var spantags = curobj.getElementsByTagName("SPAN")
+    var showstateobj = getElementbyClass(spantags, "showstate")
+    if (document.getElementById(cid).style.display == "none") {
+        if (ccollect.length > 0) {
+            if (collapseprevious == "yes")
+                contractcontent(cid)
+            document.getElementById(cid).style.display = (document.getElementById(cid).style.display != "block") ? "block" : "none"
+            if (showstateobj.length > 0) { //if "showstate" span exists in header
+                if (collapseprevious == "no")
+                    showstateobj[0].innerHTML = (document.getElementById(cid).style.display == "block") ? contractsymbol : expandsymbol
+                else
+                    revivestatus()
+            }
+        }
+    }
+}
+
+
+function expandStoreDetailsContent() {
+
+
+
+    if ($("#sc1").is(":visible")) {
+        $("#sc1").addClass("d-none");
+
+        document.getElementById("showstateDetail").innerHTML = '<img align="absmiddle" src="images/plus_symbol.gif"  />&nbsp;&nbsp;';
+    } else {
+
+
+        $("#sc1").removeClass("d-none");
+        $("#sc1").addClass("d-block");
+        document.getElementById("showstateDetail").innerHTML = '<img align="absmiddle" src="images/minus_symbol.gif"  />&nbsp;&nbsp;';
+        $(".driveDetailExpand").removeClass("d-block");
+        $(".driveDetailExpand").addClass("d-none");
+        $("#sc2").removeClass("d-block");
+        $("#sc2").addClass("d-none");
+
+
+    }
+
+}
+
+
+function expandDriveDetailContent() {
+
+    if ($("#sc2").is(":visible")) {
+        $("#sc2").addClass("d-none");
+
+        document.getElementById("showstateDriveDetail").innerHTML = '<img align="absmiddle" src="images/plus_symbol.gif"  />&nbsp;&nbsp;';
+    } else {
+        $("#sc2").removeClass("d-none");
+        $("#sc2").addClass("d-block");
+        document.getElementById("showstateDriveDetail").innerHTML = '<img align="absmiddle" src="images/minus_symbol.gif"  />&nbsp;&nbsp;';
+
+    }
+
+}
+
+
+//function expandcontent(curobj, cid) {
+//    
+//    var spantags = curobj.getElementsByTagName("SPAN")
+//    var showstateobj = getElementbyClass(spantags, "showstate")
+//    if (ccollect.length > 0) {
+//        if (collapseprevious == "yes" && cid != 'sc0')
+//            contractcontent(cid)
+//        document.getElementById(cid).style.display = (document.getElementById(cid).style.display != "block") ? "block" : "none"
+
+//        var flag = window.matchMedia('(max-width:991px)')
+//        if (flag.matches) {
+
+
+//            //document.getElementById(cid).style.display = (document.getElementById(cid).style.display != "block") ? "block" : "block"
+//            document.getElementById("sc2").display = "block";
+
+
+//        }
+
+
+
+//        if (showstateobj.length > 0) { //if "showstate" span exists in header
+//            if (collapseprevious == "no")
+//                showstateobj[0].innerHTML = (document.getElementById(cid).style.display == "block") ? contractsymbol : expandsymbol
+
+//            else
+//                revivestatus()
+//        }
+//    }
+//}
+
+
+function revivecontent() {
+    contractcontent("omitnothing")
+    selectedItem = getselectedItem()
+    selectedComponents = selectedItem.split("|")
+    for (i = 0; i < selectedComponents.length - 1; i++)
+        document.getElementById(selectedComponents[i]).style.display = "block"
+}
+
+function revivestatus() {
+    var inc = 0
+    while (statecollect[inc]) {
+        if (ccollect[inc].style.display == "block")
+            statecollect[inc].innerHTML = contractsymbol
+        else
+            statecollect[inc].innerHTML = expandsymbol
+        inc++
+    }
+}
+
+function get_cookie(Name) {
+    var search = Name + "="
+    var returnvalue = "";
+    if (document.cookie.length > 0) {
+        offset = document.cookie.indexOf(search)
+        if (offset != -1) {
+            offset += search.length
+            end = document.cookie.indexOf(";", offset);
+            if (end == -1) end = document.cookie.length;
+            returnvalue = unescape(document.cookie.substring(offset, end))
+        }
+    }
+    return returnvalue;
+}
+
+function getselectedItem() {
+    if (get_cookie(window.location.pathname) != "") {
+        selectedItem = get_cookie(window.location.pathname)
+        return selectedItem
+    }
+    else
+        return ""
+}
+
+function saveswitchstate() {
+    var inc = 0, selectedItem = ""
+    while (ccollect[inc]) {
+        if (ccollect[inc].style.display == "block")
+            selectedItem += ccollect[inc].id + "|"
+        inc++
+    }
+
+    document.cookie = window.location.pathname + "=" + selectedItem
+}
+
+function do_onload() {
+    uniqueidn = window.location.pathname + "firsttimeload"
+    var alltags = document.all ? document.all : document.getElementsByTagName("*")
+    ccollect = getElementbyClass(alltags, "switchcontent")
+    statecollect = getElementbyClass(alltags, "showstate")
+    if (enablepersist == "on" && ccollect.length > 0) {
+        document.cookie = (get_cookie(uniqueidn) == "") ? uniqueidn + "=1" : uniqueidn + "=0"
+        firsttimeload = (get_cookie(uniqueidn) == 1) ? 1 : 0 //check if this is 1st page load
+        if (!firsttimeload)
+            revivecontent()
+    }
+    if (ccollect.length > 0 && statecollect.length > 0)
+        revivestatus()
+}
+
+if (window.addEventListener)
+    window.addEventListener("load", do_onload, false)
+else if (window.attachEvent)
+    window.attachEvent("onload", do_onload)
+else if (document.getElementById)
+    window.onload = do_onload
+
+if (enablepersist == "on" && document.getElementById)
+    window.onunload = saveswitchstate

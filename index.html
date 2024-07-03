@@ -1,0 +1,451 @@
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head id="Head1"><title>
+Just Finder</title><meta http-equiv="X-UA-Compatible" content="IE=Edge; IE=9; IE=8; IE=7" /><meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" /><meta http-equiv="X-UA-Compatible" content="IE=edge" /><meta http-equiv="X-UA-Compatible" content="IE=11" /><meta http-equiv="X-UA-Compatible" content="IE=EmulateIE11" /><meta http-equiv="X-UA-Compatible" content="IE=10" /><meta http-equiv="X-UA-Compatible" content="IE=EmulateIE10" />
+    
+    
+    <!--<meta http-equiv="X-UA-Compatible" content="IE=7.5" /><meta http-equiv="X-UA-Compatible" content="IE=7" /><meta http-equiv="X-UA-Compatible" content="IE=EmulateIE7" />-->
+    <meta http-equiv="imagetoolbar" content="no" /><meta content="width=device-width, initial-scale=1" name="viewport" />
+    
+    <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?v=3.24&libraries=places&region=IN&client=gme-reliancecorporate1"></script>
+    
+    
+    <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css" /><link rel="stylesheet" type="text/css" href="css/Retail1.css" /><link rel="stylesheet" type="text/css" href="css/all.css" />
+
+
+    <script src="JavaScript/jquery.min.js" type="text/javascript"></script>
+    <!--script src="JavaScript/jquery.selectbox-0.5.js" type="text/javascript"></script-->
+    <script src="JavaScript/jquery.selectBox.js" type="text/javascript"></script>
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script type="text/javascript" src="Javascript/bootstrap.min.js"></script>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-58583947-1"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+
+        gtag('config', 'UA-58583947-1');
+    </script>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            alert(getQueryStringValue("format"));
+            var format = getQueryStringValue("format").toUpperCase();
+            if (format != "") {
+                var element = document.getElementById('Items5');                
+                if (format == "DIGITAL" || format == "DX MINI" || format == "FOOTPRINT" || format == "FRESH" || format == "JEWELLERY" || format == "JIO STORE" || format == "MARKET" || format == "SMART" || format == "SMART POINT" || format == "TRENDS" || format == "QUIKMART")
+                    document.getElementById('Items5').value = format;
+                else
+                    document.getElementById('Items5').value = "All";
+            }
+            else
+                element.value = "All";
+                document.getElementById('Items5').value = "All";
+            $("SELECT")
+                .selectBox()
+                .change(function () {
+                    	$("#console").append('Change on ' + $(this).attr('name') + ': ' + $(this).val() + '<br />');
+                    	$("#console")[0].scrollTop = $("#console")[0].scrollHeight;
+                });
+        });
+
+        function getQueryStringValue(key) {
+            return unescape(window.location.search.replace(new RegExp("^(?:.*[&\\?]" + escape(key).replace(/[\.\+\*]/g, "\\$&") + "(?:\\=([^&]*))?)?.*$", "i"), "$1"));
+        }
+    </script>
+    <script src="JavaScript/Retail.js@v=20220223_1" type="text/javascript"></script>
+    
+    
+
+    <style type="text/css">
+        html, body, div, span, h1, h2, h3, h4, h5, h6, p, blockquote, pre, small, strike, strong, sub, sup, tt, var, b, u, i, center, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td, article, aside, canvas, details, embed, figure, figcaption, footer, header, hgroup, menu, nav, output, ruby, section, summary, time, mark, audio, video {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    font-size: 100%;
+    font: inherit;
+    vertical-align: baseline;
+}
+
+
+        html {
+            font-family: Tahoma,Calibri,Trebuchet MS,Arial;
+            font-size: 13px;
+        }
+
+        #hyperlink {
+            z-index: 2;
+        }
+        /* Drop down styles*/ div.selectbox-wrapper {
+            position: absolute;
+            width: 150px;
+            background-color: white;
+            border: 1px solid #ccc;
+            margin: 0px;
+            margin-top: -10px;
+            padding: 0px;
+            text-align: left;
+            max-height: 200px;
+            overflow: auto;
+            margin: -10px 0px 0px 4px;
+        }
+            /*Drop down list styles*/ div.selectbox-wrapper ul {
+                list-style-type: none;
+                margin: 0px;
+                padding: 0px;
+            }
+                /* Selected item in dropdown list*/ div.selectbox-wrapper ul li.selected {
+                    font-family: Arial, Helvetica, sans-serif;
+                    color: #6c6c6c;
+                    font-size: 12px;
+                    font-weight: normal;
+                    background-color: #ffffff;
+                }
+                /* Hover state for dropdown list */ div.selectbox-wrapper ul li.current {
+                    font-family: Arial, Helvetica, sans-serif;
+                    color: #6c6c6c;
+                    font-size: 12px;
+                    font-weight: normal;
+                    background-color: #d4d4d4;
+                }
+                /* Drop down list items style*/ div.selectbox-wrapper ul li {
+                    list-style-type: none;
+                    font-weight: normal;
+                    color: #6c6c6c;
+                    display: block;
+                    margin: 0;
+                    padding: 4px;
+                    cursor: pointer;
+                }
+    </style>
+
+    <script type="text/javascript">
+        // look for window.event in case event isn't passed in
+        if (window.event) { e = window.event; }
+        function searchKeyPress(e) {
+            try {
+                if (e.keyCode == 13) {
+                    document.getElementById('Search').click();
+                }
+            }
+            catch (e) {
+            }
+        }
+    </script>
+
+    <script type="text/javascript">
+        window.onerror = function (message, url, lineNumber) {
+            // code to execute on an error  
+            return true; // prevents browser error messages  
+        };
+
+    </script>
+
+    <script type="text/javascript">
+
+        function showlistView() {
+            $("#mapContainer").addClass("d-none");
+            $("#map_canvas").addClass("d-none");
+
+            if (document.getElementById("directionsPanel").innerHTML != "") {
+                $("#sc2").removeClass("d-none");
+                $("#sc2").addClass("d-block");
+
+            }
+
+            else {
+
+                $("#blueboldtext1").removeClass("d-none");
+                $("#blueboldtext1").addClass("d-block");
+                $(".dotthorbg ").removeClass("d-none");
+                $(".dotthorbg ").addClass("d-block");
+
+                $("#sc0").removeClass("d-none");
+                $("#sc0").addClass("d-block");
+
+                $("#storeDetail").removeClass("d-none");
+                $("#storeDetail").addClass("d-block");
+
+                $("#sc1").removeClass("d-none");
+                $("#sc1").addClass("d-block");
+                document.getElementById("showstateDetail").innerHTML = '<img align="absmiddle" src="images/minus_symbol.gif"  />&nbsp;&nbsp;';
+                $(".driveDetailExpand").addClass("d-none");
+                $(".scrollAreaClearDirection").addClass("d-none");
+                document.getElementById("sc2").style.display = "none";
+                document.getElementById("Result").style.display = "block";
+                document.getElementById("storeDetail").style.display = "block";
+            }
+        }
+
+
+        function showmapView() {
+            map.setZoom(12);
+            $("#blueboldtext1").addClass("d-none");
+            $(".dotthorbg ").removeClass("d-block");
+            $(".dotthorbg ").addClass("d-none");
+
+            $("#storeDetail").removeClass("d-block");
+            $("#storeDetail").addClass("d-none");
+
+            $("#sc1").removeClass("d-block");
+            $("#sc1").addClass("d-none");
+
+            $("#sc2").removeClass("d-block");
+            $("#sc2").addClass("d-none");
+            document.getElementById("map_canvas").style.visibility = "visible";
+            $("#mapContainer").removeClass("d-none");
+            $("#mapContainer").addClass("d-block");
+            $("#map_canvas").removeClass("d-none");
+            $("#map_canvas").addClass("d-block");
+            $(".driveDetailExpand").addClass("d-none");
+            $("#sidePanel").show();
+            $("#welcomeMsg").removeClass("d-flex");
+            $("#welcomeMsg").addClass("d-none");
+            $("#clearDirectionsDetails").addClass("d-none");
+        }
+
+    </script>
+
+
+</head>
+<body style="margin: 0px; padding: 0px;" onload="initialize();OnReSizeWindow();">
+    
+    <nav class="navbar navbar-light  mx-0 text-center text-sm-left " style="z-index: 2; background-color: #9bc9f7; box-shadow: 0px 2px 2px 0px #a1a1a1">
+        <form id="form1" class="w-100 m-0">
+            <div class="row w-100 align-items-center px-lg-3">
+                <div class="col-lg-1 col-xl-1 col-6" id="relianceLogo">
+                    <img src="img/store locator.png" id="mainLogo" />
+                </div>
+                <div class="col-lg-2 col-xl-2 col-6 credits">
+                    <h4 style="color: white;" id="title" class="m-0">Hello, find a store near by you</h4>
+                </div>
+                <div class="col-3"></div>
+
+                <div class="col-lg-2  col-12 mb-2 ps-2 pe-2 mb-md-2 mb-lg-0" id="location">
+                    <input id="address" class=" px-1 pr-3 mt-0 form-control col-12 w-100" type="text"
+                        value="Enter a location" required onfocus="watermark('address','Enter a location');"
+                        onblur="watermark('address','Enter a location');" onkeypress="searchKeyPress(event);" 
+                         />
+               
+            <span class="position-absolute" id="removeLocation" style="top:21px;right:468px;font-weight:bold;font-size:20px" onclick="$('#address').val('')">&times;</span>
+                     
+                    
+
+                </div>
+
+                <div class="col-lg-2 col-xl-auto col-6 ps-2">
+                    <select id="Items5" class="form-select " name="standard-dropdown">
+                        
+                        
+                        <option style="text-decoration: none;" value="All">All</option>
+                        
+                        
+                        
+                       <option value="CENTRO">CENTRO</option>
+
+                        <option value="DIGITAL">DIGITAL</option>
+                        
+                        
+                        
+                          <option value="FASHION FACTORY">FASHION FACTORY</option>
+                               <option value="FRESH">FRESH</option>
+
+
+                        <option value="HAMLEYS">HAMLEYS</option>
+                        
+                        <option value="JEWELLERY">JEWELLERY</option>
+                        <option value="JIO STORE">JIO STORE</option>
+                        
+                        <option value="MARKET">MARKET</option>
+                        
+                        
+                        
+                        
+                        <option value="QWIKMART">QWIKMART</option>
+                        <option value="SB">SB</option>
+                        <option value="SMART">SMART</option>
+                        <option value="SMART POINT">SMART POINT</option>
+                        
+                        
+                        
+                        
+                        <option value="TRENDS">TRENDS</option>
+                        <option value="FOOTPRINT">TRENDS FOOTWEAR</option>
+                        <option value="VIMAL">VIMAL</option>
+                        <option value="VISION EXPRESS">VISION EXPRESS</option>
+                    </select>
+                </div>
+
+                <div class="col-lg-1  col-6 pe-2 ">
+                    <input type="text" maxlength="15" value="Radius in Kms?"
+                        id="BufferDistance" class="col-12 form-control px-1 pr-3" autocomplete="off" onfocus="watermark('BufferDistance','Radius in Kms?');"
+                        onblur="watermark('BufferDistance','Radius in Kms?');" />
+                </div>
+
+                <div class="col-lg-1  col-12 ps-1 mt-1 mt-lg-0">
+                    <input type="submit" name="button" class="btn my-2 mx-1 my-sm-0 col-12" id="searchKey" onclick="codeAddressFormat(document.getElementById('Items5').value, document.getElementById('BufferDistance').value, document.getElementById('address').value, 'false'); return false;" value="Search"
+                        style="background-color: #000080; color: white;" />
+                </div>
+
+
+            </div>
+        </form>
+
+    </nav>
+
+
+
+    <div class="container-fluid overflow-hidden">
+
+
+        <div class="row h-100">
+
+            <div class="col-lg-4 col-12 listViewDiv collapse collapse-horizontal show" id="collapseWidthExample">
+                <span class="ErrorMessagePannel mt-2 col-lg-4">No Store Found</span>
+
+                <div id="blueboldtext1" style="display: none;">
+                    <div id="Result" class="ps-2" style="margin-top: 9px;">
+                    </div>
+                </div>
+
+                <div class="dotthorbg" style="display: none;">
+                    <img src="images/spacer.gif" width="1" height="1" />
+                </div>
+
+                <div id="sc0">
+                    <table width="100%" border="0" cellspacing="2" cellpadding="0">
+                        <tr id="storeDetail">
+                            <td nowrap="nowrap">
+                                <div onclick="expandStoreDetailsContent()" id="1" class="dropdown" style="cursor: pointer;">
+                                    <span id="showstateDetail"></span><span class="blacktext">Store Details</span>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div id="sc1" class="switchcontent">
+                                    <table width="100%" border="0" cellspacing="0" cellpadding="0">
+                                        <tr>
+                                            <td>
+                                                <div class="scrollArea">
+                                                    <div id="sidePanel">
+                                                    </div>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                    </table>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="dotthorbg">
+                                <img src="images/spacer.gif" width="1" height="1" />
+                            </td>
+                        </tr>
+                        <tr>
+                            <td nowrap="nowrap">
+                                <div onclick="expandDriveDetailContent()" id="2" class="dropdown driveDetailExpand" style="cursor: pointer; display: none;">
+                                    <span id="showstateDriveDetail"></span><span class="blacktext">Drive Details&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+
+                                <div id="sc2" class="switchcontent">
+
+                                    <table width="100%">
+                                        <tr>
+                                            <td>
+                                                <div class="scrollAreaClearDirection">
+                                                    <div id="ClearDirectionSpan" style="background-color: #BB2D15; color: White; width: 100%; text-align: center; padding: 2px 2px 2px 2px; cursor: pointer; display: block;"
+                                                        onclick="ClearDirections()">
+                                                        Click here to Clear Directions
+                                                    </div>
+                                                    <div id="directionsPanel" class="labelCSS4"
+                                                        style="background-color: White;">
+                                                    </div>
+                                                </div>
+
+                                            </td>
+                                        </tr>
+                                    </table>
+                                </div>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+
+
+
+                <div class=" d-flex flex-column align-items-center justify-content-center h-100" id="welcomeMsg" style="height: 90%; justify-content: space-between ">
+                    <h3 class="font-weight-bold mb-3" style="font-weight: bold; color: #C03015;">Welcome!</h3>
+                    <h5 style="color: #000080;">Please enter location to find nearby stores.</h5>
+                </div>
+
+            </div>
+
+            <div class="arrowpartition col-auto d-lg-block d-none">
+
+                <img src="images/partition.gif" style="cursor: pointer;" data-bs-toggle="collapse" data-bs-target="#collapseWidthExample" aria-expanded="false" aria-controls="collapseWidthExample"
+                    width="15" height="100%"  />
+            </div>
+
+
+
+            <div class="col-lg col-12 px-0 overflow-hidden d-none d-lg-block" id="mapContainer">
+
+
+                <div id="map_canvas" class="h-100 bg-light"></div>
+            </div>
+
+
+
+
+        </div>
+
+        <div style="position: fixed; visibility: hidden; bottom: 0px;" class="row bg-dark w-100 d-sm-none d-block d-lg-none d-md-flex d-flex" id="viewMapBtn">
+            <button type="button" id="listBtn" onclick="showlistView()" class="btn btn-danger btn-lg col-6 text-white">
+                List View</button>
+            <button type="button" id="mapBtn" onclick="showmapView()" class="btn btn-primary btn-lg col-6 text-white">
+                Map View</button>
+        </div>
+    </div>
+
+
+
+    <div id="Message" class="MessageDiv">
+    </div>
+    <!--For Modal Popup  -->
+    
+
+    
+    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-xl modal-dialog-centered">
+            <div class="modal-content " id="storeContent">
+                <!-- Modal content-->
+            </div>
+        </div>
+    </div>
+
+
+    
+    <div class="modal fade" id="getdirectionmodal" tabindex="-1" aria-labelledby="getdirectionlabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-body" id="directioncontent">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        var form = document.getElementById("form1");
+        function handleForm(event) { event.preventDefault(); }
+        form.addEventListener('submit', handleForm);
+    </script>
+
+    <script src="JavaScript/polyfill.min.js" type="text/javascript"></script>
+    <script src="JavaScript/classList.min.js" type="text/javascript"></script>
+</body>
+</html>
